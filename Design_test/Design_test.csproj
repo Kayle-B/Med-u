@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\MED-U-logo-white.jpg" />
+    <None Remove="img\Voeg_patient_toe.jpg" />
+    <None Remove="Overzicht.jpg" />
+    <None Remove="Zoekuh.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="MED-U-logo-white.jpg" />
+    <Resource Include="Overzicht.jpg" />
+    <Resource Include="Voeg_patient_toe.jpg" />
+    <Resource Include="Zoekuh.jpg">
+      <CustomToolNamespace>Zoekuh</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+</Project>

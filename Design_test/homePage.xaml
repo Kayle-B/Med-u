@@ -1,0 +1,83 @@
+﻿<Page x:Class="Design_test.homePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Design_test"
+      mc:Ignorable="d" 
+      d:DesignHeight="780" d:DesignWidth="480"
+      Title="homePage" Background="white">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="350*" />
+            <ColumnDefinition Width="30*" />
+        </Grid.ColumnDefinitions>
+        <!--Header-->
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Height="120" VerticalAlignment="Top">
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="#FFE67937" Height="auto"/>
+            <Image HorizontalAlignment="Center" Width="100" Height="60" Source="MED-U-logo-white.jpg" Stretch="Fill" />
+        </Grid>
+
+
+        <!--Zoek Op naam-->
+        <Grid Panel.ZIndex="0" Grid.Row="1" Grid.Column="1" >
+            <Rectangle  Panel.ZIndex="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="120" Fill="#FFE67937" RadiusX="20" RadiusY="20"/>
+            <Label Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0" Panel.ZIndex="1" Content="Zoek op naam" Foreground="White" FontWeight="Bold" FontSize="20"/>
+            <Grid Margin="0,60,0,0" VerticalAlignment="Top">
+                <Rectangle  Panel.ZIndex="1" RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="37" Stroke="White" Width="294" Fill="White"/>
+                <TextBox x:Name="patientTextBox" Margin="0,5,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" TextWrapping="Wrap" Width="278" Height="26" BorderBrush="White"/>
+                <Button Margin="250,0,0,0" Panel.ZIndex="2" Height="23" Width="26" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+                    <Image Source="zoekuh.jpg"/>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <!--Overzicht-->
+
+        <Grid Grid.Row="2" VerticalAlignment="Top" Grid.Column="1">
+            <StackPanel Panel.ZIndex="2" Width="320" Height="120">
+                <Label Padding="0" Content="Patiënten overzicht" Foreground="White" FontWeight="Bold" FontSize="20"/>
+                <Label Padding="0" Content="12" Foreground="White" FontWeight="Bold" FontSize="45"/>
+                <Label Padding="0" Content="patiënten " Foreground="White" FontSize="20"/>
+            </StackPanel>
+
+            <Border Width="350" Height="120" Margin="0,0,0,0" CornerRadius="8,8,8,8" Grid.Column="1">
+                <Border.Background>
+                    <ImageBrush ImageSource="Overzicht.jpg"/>
+                </Border.Background>
+            </Border>
+        </Grid>
+
+        <!--Voeg patient toe-->
+        <Grid Grid.Row="3" VerticalAlignment="Top" Grid.Column="1">
+            <Border Panel.ZIndex="0" Width="350" Height="120" CornerRadius="8,8,8,8">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="Voeg_patient_toe.jpg"/>
+                </Border.Background>
+            </Border>
+            <Label Panel.ZIndex="1" Margin="10,0,0,0" Content="Voeg patiënt toe" Foreground="White" FontWeight="Bold" FontSize="25" Width="206"/>
+
+            <Grid Margin="0,20,0,0" Width="320">
+                <Rectangle Panel.ZIndex="1" HorizontalAlignment="Left" RadiusX="5" RadiusY="5" Height="37" Stroke="White" Width="200" Fill="White"/>
+                <TextBox Panel.ZIndex="1" Margin="5,0,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" Width="188" Height="26" BorderBrush="White"/>
+
+
+                <Button HorizontalAlignment="Right" x:Name="addPatientButton" Content="Add" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100" Click="addPatientButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
