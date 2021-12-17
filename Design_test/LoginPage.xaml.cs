@@ -34,8 +34,9 @@ namespace Design_test
             if (doctor != null)
             {
                 doctor.getPatientForDoctor();
-
-                /*AFTER LOGIN LOAD NEW PAGE*/
+                sqlserver.closeConnection();
+                homePage homePage = new homePage();
+                this.Content = homePage;
             }
             else
             {
