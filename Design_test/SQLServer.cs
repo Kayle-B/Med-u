@@ -22,13 +22,9 @@ namespace Design_test
 
         public void openConnection()
         {
-            try
+            if (conn.State.ToString() != "Open")
             {
                 conn.Open();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
 
@@ -39,14 +35,7 @@ namespace Design_test
 
         public void closeConnection()
         {
-            try
-            {
-                conn.Close();
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+            conn.Close();
         }
 
         public int getPatientCount()

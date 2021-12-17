@@ -21,12 +21,14 @@ namespace Design_test
     public partial class LoginPage : Page
     {
         SQLServer sqlserver = new SQLServer();
+        System.Windows.Controls.Frame main;
         
-        public LoginPage()
+        public LoginPage(System.Windows.Controls.Frame main)
         {
             InitializeComponent();
+            this.main = main;
         }
-
+        
         private void loginBtn(object sender, RoutedEventArgs e)
         {
             sqlserver.openConnection();
@@ -35,8 +37,8 @@ namespace Design_test
             {
                 doctor.getPatientForDoctor();
                 sqlserver.closeConnection();
-                homePage homePage = new homePage();
-                this.Content = homePage;
+                main.Content = new homePage();
+
             }
             else
             {

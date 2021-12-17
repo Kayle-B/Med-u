@@ -20,11 +20,7 @@
             <ColumnDefinition Width="350*" />
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
-        <!--Header-->
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Height="120" VerticalAlignment="Top">
-            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="#FFE67937" Height="auto"/>
-            <Image HorizontalAlignment="Center" Width="100" Height="60" Source="MED-U-logo-white.jpg" Stretch="Fill" />
-        </Grid>
+
 
 
         <!--Login-->

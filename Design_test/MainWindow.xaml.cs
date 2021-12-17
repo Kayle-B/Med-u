@@ -16,16 +16,15 @@ namespace Design_test
     /// </summary>
     public partial class MainWindow : Window
     {
+        // IF USER IS NOT LOGGED IN HIDE HAMBURGER
+        
         public MainWindow()
         {
             InitializeComponent();
-            LoginPage loginpage = new LoginPage();
-            this.Content = loginpage;
-/*            hamburgerMenu.Visibility = Visibility.Collapsed;
-*/            SQLServer setup = new SQLServer();
+            Main.Content = new LoginPage(Main);
         }
 
-/*        private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
+        private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
         {
             if (hamburgerMenu.Visibility != Visibility.Collapsed)
             {
@@ -39,48 +38,45 @@ namespace Design_test
             {
                 hamburgerMenu.Visibility = Visibility.Visible;
             }
-        }*/
-
-        private void addPatientButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
-            homePage homePage = new homePage();
-            this.Content = homePage;
+            Main.Content = new homePage();
         }
 
         private void patientOverzichtBtn_Click(object sender, RoutedEventArgs e)
         {
-            patientOverzicht patientOverzicht = new patientOverzicht();
-            this.Content = patientOverzicht;
+            Main.Content = new patientOverzicht();
         }
 
-/*        private void Button_Click(object sender, RoutedEventArgs e)
+        private void patientToevoegenBtn_Click(object sender, RoutedEventArgs e)
         {
-            string connString = "Data Source=localhost;Initial Catalog = pf2; User ID = root; Password=";
-            string query = "SELECT * FROM users";
 
-            try
+        }
+
+        private void instellingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void helpBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Main_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (Main.Content.ToString() == "Design_test.LoginPage")
             {
-                MySqlConnection conn = new MySqlConnection(connString);
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    MessageBox.Show(reader.GetString(0)); 
-                }
-
+                hamburgerMenu.Visibility = Visibility.Collapsed;
+                openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
             }
-            catch (Exception ex)
+            else
             {
-
-                throw ex;
+                openHamburgerMenuBtn.Visibility = Visibility.Visible;
             }
-        }*/
+        }
+
     }
 }

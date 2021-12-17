@@ -24,32 +24,5 @@ namespace Design_test
         {
             InitializeComponent();
         }
-
-        private void homepageBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-        }
-
-        private void patientOverzichtBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (hamburgerMenu.Visibility != Visibility.Collapsed)
-            {
-                hamburgerMenu.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void openHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (hamburgerMenu.Visibility == Visibility.Collapsed)
-            {
-                hamburgerMenu.Visibility = Visibility.Visible;
-            }
-        }
     }
 }

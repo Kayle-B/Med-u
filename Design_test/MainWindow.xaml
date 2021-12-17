@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Design_test"
         mc:Ignorable="d"
         Title="MainWindow" Height="780" Width="450">
-
+    <!--Creating layout-->
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*"/>
@@ -20,7 +20,8 @@
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
-        <!--<Button x:Name="openHamburgerMenuBtn" Panel.ZIndex="2" Content="≡" Grid.ColumnSpan="2" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="72" Click="openHamburgerMenuBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <!--Hamburger Menu-->
+        <Button x:Name="openHamburgerMenuBtn" Panel.ZIndex="2" Content="≡" Grid.ColumnSpan="2" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="72" Click="openHamburgerMenuBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
         <Grid Panel.ZIndex="3" x:Name="hamburgerMenu" Width="250" Grid.RowSpan="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch">
             <Button x:Name="closeHamburgerMenuBtn" Panel.ZIndex="2" Content="X" Grid.ColumnSpan="2" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontSize="55" Click="closeHamburgerMenuBtn_Click" BorderBrush="{x:Null}"/>
             <Rectangle x:Name="redRectangle" Height="auto" Width="auto">
@@ -31,12 +32,20 @@
             <StackPanel HorizontalAlignment="Stretch" Margin="0,100,0,0">
                 <Button x:Name="homepageBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Homepage" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="homepageBtn_Click"/>
                 <Button x:Name="patientOverzichtBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Patienten overzicht" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="patientOverzichtBtn_Click"/>
-                <Button x:Name="patientToevoegenBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Patient toevoegen" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <Button x:Name="instellingenBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Instellingen" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <Button x:Name="helpBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Help" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Button x:Name="patientToevoegenBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Patient toevoegen" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="patientToevoegenBtn_Click"/>
+                <Button x:Name="instellingenBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Instellingen" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="instellingBtn_Click"/>
+                <Button x:Name="helpBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Help" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="helpBtn_Click"/>
             </StackPanel>
             <Button x:Name="logoutBtn" Height="50" Padding="20,0,0,0" Content="Uitloggen" HorizontalContentAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" Foreground="White" BorderBrush="#FFE67937" Background="#FFE67937"/>
-        </Grid>-->
+        </Grid>
+        
+        <!--Header-->
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Height="120" VerticalAlignment="Top" Panel.ZIndex="5">
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="#FFE67937" Height="auto"/>
+            <Image HorizontalAlignment="Center" Width="100" Height="60" Source="MED-U-logo-white.jpg" Stretch="Fill" />
+        </Grid>
+        
+        <Frame x:Name="Main" Grid.ColumnSpan="3" Grid.RowSpan="4" NavigationUIVisibility="Hidden" LayoutUpdated="Main_LayoutUpdated"/>
 
 
     </Grid>
