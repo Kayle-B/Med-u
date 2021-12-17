@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Design_test
 {
-    internal class Patient
+    public class Patient
     {
-        private string name;
-        private string email;
-        private string phone;
-        private string gender;
-        private string lastname;
-        private int age;
+        public string name { get; }
+        public string email;
+        public string phone;
+        public string gender;
+        public string lastname;
+        public int age;
         
         public Patient(string name, string lastname, int age)
         {

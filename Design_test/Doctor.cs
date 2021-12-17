@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace Design_test
 {
-    internal class Doctor
+    public class Doctor
     {
         private MySqlConnection conn { get; }
         private MySqlCommand cmd;
@@ -21,16 +21,11 @@ namespace Design_test
         public List<Patient> Patients { get { return patients; } }
 
 
-        private void addPatient(string name, string lastname, int age)
+        public void addPatient(string name, string lastname, int age)
         {
             this.patients.Add(new Patient(name, lastname, age));
         }
 
-/*        public override string ToString()
-        {
-            return base.ToString();
-        }
-*/
         public Doctor(MySqlConnection conn, int id, string name, string lastname, string email)
         {
             this.conn = conn;
@@ -39,12 +34,6 @@ namespace Design_test
             this.lastname = lastname;
             this.email = email;
         }
-
-        /*  public string getFullName()
-            {
-                return name + " " + lastname; 
-            }*/
-
 
         public Doctor getPatientForDoctor()
         {

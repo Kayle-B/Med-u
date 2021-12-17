@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace Design_test
 {
-    class SQLServer
+    public class SQLServer
     {
         private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = pf2; UID = root; Password=");
         private MySqlCommand cmd;
         private MySqlDataReader reader;
-        private List<Patient> patients;
         private int patientCount;
         private Doctor doctor;
 
@@ -38,7 +37,7 @@ namespace Design_test
             conn.Close();
         }
 
-        public int getPatientCount()
+/*        public int getPatientCount()
         {
             string query = "SELECT COUNT(*) FROM users";
             cmd = new MySqlCommand(query, conn);
@@ -51,9 +50,9 @@ namespace Design_test
             reader.Close();
 
             return patientCount;
-        }
+        }*/
 
-        public List<Patient> getPatientList(string name)
+/*        public List<Patient> getPatientList(string name)
         {
             string query = string.Format("SELECT * FROM users WHERE name='{0}'", name);
             cmd = new MySqlCommand(query, conn);
@@ -62,12 +61,12 @@ namespace Design_test
 
             while (reader.Read())
             {
-/*                patients.Add(new Patient(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), (int)reader.GetValue(5)));
-*/            }
+*//*                patients.Add(new Patient(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), (int)reader.GetValue(5)));
+*//*            }
             reader.Close();
 
             return patients;
-        }
+        }*/
 
         public MySqlDataReader executeQeury(string query)
         {

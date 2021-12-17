@@ -22,14 +22,17 @@ namespace Design_test
     public partial class homePage : Page
     {
         MySqlDataReader reader;
-        SQLServer sQLConnection = new SQLServer();
-        List<Patient> patients = new List<Patient>();
+        Doctor doctor;
+        SQLServer sQLServer;
+        List<Patient> searchPatient = new List<Patient>();
 
-        public homePage()
+
+        public homePage(SQLServer sQLServer, Doctor doctor)
         {
             InitializeComponent();
-            sQLConnection.openConnection();
-            patientCountLabel.Content = sQLConnection.getPatientCount();
+            this.sQLServer = sQLServer;
+            this.doctor = doctor;
+            patientCountLabel.Content = doctor.Patients.Count();
         }
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
@@ -39,14 +42,22 @@ namespace Design_test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(patientTextBox.Text != null)
+            if (patientTextBox.Text != "")
             {
-                patients = sQLConnection.getPatientList(patientTextBox.Text);
-                foreach (var patient in patients)
+                foreach (var patient in doctor.Patients)
                 {
-/*                    MessageBox.Show(string.Format("{0}, {1}, {2}, {3}, {4}", patient.gender, patient.email, patient.phone, patient.gender, patient.age));
-*/                }
+                    if (patient.name.ToLower().Contains(patientTextBox.Text.ToLower()))
+                    {
+                        MessageBox.Show(patient.name);
+                    }
+
+                }
             }
+        }
+
+        private void patientTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

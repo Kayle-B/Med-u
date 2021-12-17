@@ -33,7 +33,7 @@
             <Label Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0" Panel.ZIndex="1" Content="Zoek op naam" Foreground="White" FontWeight="Bold" FontSize="20"/>
             <Grid Margin="0,60,0,0" VerticalAlignment="Top">
                 <Rectangle  Panel.ZIndex="1" RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="37" Stroke="White" Width="294" Fill="White"/>
-                <TextBox x:Name="patientTextBox" Margin="0,5,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" TextWrapping="Wrap" Width="278" Height="26" BorderBrush="White"/>
+                <TextBox x:Name="patientTextBox" Margin="0,5,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" TextWrapping="Wrap" Width="278" Height="26" BorderBrush="White" TextChanged="patientTextBox_TextChanged"/>
                 <Button Margin="250,0,0,0" Panel.ZIndex="2" Height="23" Width="26" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
                     <Image Source="zoekuh.jpg"/>
                 </Button>

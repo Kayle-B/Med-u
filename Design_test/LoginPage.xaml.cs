@@ -37,8 +37,7 @@ namespace Design_test
             {
                 doctor.getPatientForDoctor();
                 sqlserver.closeConnection();
-                main.Content = new homePage();
-
+                main.Content = new homePage(this.sqlserver, doctor);
             }
             else
             {

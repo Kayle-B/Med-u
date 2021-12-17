@@ -16,11 +16,12 @@ namespace Design_test
     /// </summary>
     public partial class MainWindow : Window
     {
-        // IF USER IS NOT LOGGED IN HIDE HAMBURGER
-        
+        SQLServer sQLConnection = new SQLServer();
         public MainWindow()
         {
             InitializeComponent();
+            hamburgerMenu.Visibility = Visibility.Collapsed;
+            openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
             Main.Content = new LoginPage(Main);
         }
 
@@ -42,8 +43,8 @@ namespace Design_test
 
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new homePage();
-        }
+/*            Main.Content = new homePage(doctor);
+*/        }
 
         private void patientOverzichtBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -65,18 +66,12 @@ namespace Design_test
 
         }
 
-        private void Main_LayoutUpdated(object sender, EventArgs e)
+        private void Main_ContentRendered(object sender, EventArgs e)
         {
-            if (Main.Content.ToString() == "Design_test.LoginPage")
-            {
-                hamburgerMenu.Visibility = Visibility.Collapsed;
-                openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
-            }
-            else
+            if (Main.Content.ToString() != "Design_test.LoginPage")
             {
                 openHamburgerMenuBtn.Visibility = Visibility.Visible;
             }
         }
-
     }
 }
