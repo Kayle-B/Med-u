@@ -42,6 +42,7 @@ namespace Design_test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            doctor.getPatientForDoctor();
             if (patientTextBox.Text != "")
             {
                 foreach (var patient in doctor.Patients)

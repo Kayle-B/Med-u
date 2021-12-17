@@ -37,9 +37,18 @@ namespace Design_test
 
         public Doctor getPatientForDoctor()
         {
+            // WHY IS THE CONN CLOSED ON THE SECOND SEARCH IN HOMEPAGE FIX THIS
+            if (conn.State.ToString() == "Closed")
+            {
+                conn.Open();
+            }
             if (this.patients == null)
             {
                 this.patients = new List<Patient>();
+            }
+            else
+            {
+                this.patients.Clear();
             }
             string query = string.Format("SELECT * FROM patient WHERE doctor_id = {0}", this.id);
             cmd = new MySqlCommand(query, this.conn);
