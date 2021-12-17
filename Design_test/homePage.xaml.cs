@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Design_test
 {
@@ -21,38 +21,15 @@ namespace Design_test
     /// </summary>
     public partial class homePage : Page
     {
-        string connString1 = "data source=127.0.0.1; port=3306; user id=root;password=;database=pt2;";
-        string connString = "Server=127.0.0.1;Database=pt2;User Id=root;Password=;";
-
-        
-
-        public string query = "SELECT * FROM patient";
+        MySqlDataReader reader;
+        SQLServer sQLConnection = new SQLServer();
+        List<Patient> patients = new List<Patient>();
 
         public homePage()
         {
             InitializeComponent();
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(query, conn);
-
-            cmd.CommandTimeout = 60;
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    Console.WriteLine(reader.GetString(0));
-                }
-                else
-                {
-                    MessageBox.Show("There we no rows found");
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                //MessagBox.Show(ex);
-            }
+            sQLConnection.openConnection();
+            patientCountLabel.Content = sQLConnection.getPatientCount();
         }
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +41,11 @@ namespace Design_test
         {
             if(patientTextBox.Text != null)
             {
-
+                patients = sQLConnection.getPatientList(patientTextBox.Text);
+                foreach (var patient in patients)
+                {
+/*                    MessageBox.Show(string.Format("{0}, {1}, {2}, {3}, {4}", patient.gender, patient.email, patient.phone, patient.gender, patient.age));
+*/                }
             }
         }
     }

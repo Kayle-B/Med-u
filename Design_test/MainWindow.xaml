@@ -20,7 +20,7 @@
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="openHamburgerMenuBtn" Panel.ZIndex="2" Content="≡" Grid.ColumnSpan="2" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="72" Click="openHamburgerMenuBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <!--<Button x:Name="openHamburgerMenuBtn" Panel.ZIndex="2" Content="≡" Grid.ColumnSpan="2" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="72" Click="openHamburgerMenuBtn_Click" Background="{x:Null}" BorderBrush="{x:Null}"/>
         <Grid Panel.ZIndex="3" x:Name="hamburgerMenu" Width="250" Grid.RowSpan="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Stretch">
             <Button x:Name="closeHamburgerMenuBtn" Panel.ZIndex="2" Content="X" Grid.ColumnSpan="2" Width="100" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" FontSize="55" Click="closeHamburgerMenuBtn_Click" BorderBrush="{x:Null}"/>
             <Rectangle x:Name="redRectangle" Height="auto" Width="auto">
@@ -36,9 +36,7 @@
                 <Button x:Name="helpBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Help" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"/>
             </StackPanel>
             <Button x:Name="logoutBtn" Height="50" Padding="20,0,0,0" Content="Uitloggen" HorizontalContentAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" Foreground="White" BorderBrush="#FFE67937" Background="#FFE67937"/>
-        </Grid>
-
-
+        </Grid>-->
 
 
     </Grid>

@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace Design_test
 {
-    internal class patient
+    internal class Patient
     {
-        public string name;
-        public patient(string name)
+        private string name;
+        private string email;
+        private string phone;
+        private string gender;
+        private string lastname;
+        private int age;
+        
+        public Patient(string name, string lastname, int age)
         {
             this.name = name;
+            this.lastname = lastname;
+            this.age = age;
         }
     }
 }

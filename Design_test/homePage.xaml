@@ -45,7 +45,7 @@
         <Grid Grid.Row="2" VerticalAlignment="Top" Grid.Column="1">
             <StackPanel Panel.ZIndex="2" Width="320" Height="120">
                 <Label Padding="0" Content="Patiënten overzicht" Foreground="White" FontWeight="Bold" FontSize="20"/>
-                <Label Padding="0" Content="12" Foreground="White" FontWeight="Bold" FontSize="45"/>
+                <Label Padding="0" x:Name="patientCountLabel" Content="12" Foreground="White" FontWeight="Bold" FontSize="45"/>
                 <Label Padding="0" Content="patiënten " Foreground="White" FontSize="20"/>
             </StackPanel>
 
