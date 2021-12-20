@@ -13,7 +13,7 @@ namespace Design_test
     {
         private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = pf2; UID = root; Password=");
         private MySqlCommand cmd;
-        private MySqlDataReader reader;
+        public MySqlDataReader reader;
         private int patientCount;
         public Doctor doctor;
 
@@ -72,6 +72,7 @@ namespace Design_test
         {
             cmd = new MySqlCommand(query, conn);
             reader = cmd.ExecuteReader();
+            var read = reader;
             return reader;
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace Design_test
 {
@@ -22,10 +23,14 @@ namespace Design_test
     {
         string name;
         string[] split;
-        public editPatient(string name)
+        SQLServer sQLServer = new SQLServer();
+        Doctor doctor;
+
+        public editPatient(string name, Doctor doctor)
         {
             InitializeComponent();
             this.name = name;
+            this.doctor = doctor;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -43,6 +48,41 @@ namespace Design_test
                     naamTextBox.Text = name;
                 }
             }
+        }
+
+        private void savePatientBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string salutation = aanhefTextBox.Text;
+            string name = naamTextBox.Text;
+            string lastname = achternaamTextBox.Text;
+            string insertion = voegselTextBox.Text;
+            string email = emailTextBox.Text;
+            string phone = telefoonTextBox.Text;
+            string BSN = bsnTextBox.Text;
+            string allergies = allergieenTextBox.Text;
+
+            if (name == "" || lastname == "" || email == "" || phone == "" || BSN == "")
+            {
+                MessageBox.Show("Zorg ervoor dat u alles invuld!");
+                return;
+            }
+            else
+            {
+                string query = string.Format("SELECT * FROM patient WHERE name = '{0}' && lastname='{1}';", name, lastname);
+                if (sQLServer.executeQeury(query).HasRows != true)
+                {
+                    sQLServer.reader.Close();
+                    query = string.Format("INSERT INTO patient(name, lastname, age, doctor_id)VALUES('{0}', '{1}', '{2}', {3});", name, lastname, 20, doctor.id);
+                    sQLServer.reader = sQLServer.executeQeury(query);
+                    sQLServer.reader.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Dit persoon bestaalt al");
+                }
+            }
+
+            
         }
     }
 }

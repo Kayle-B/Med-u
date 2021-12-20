@@ -79,7 +79,7 @@
                 <TextBox Width="360" Height="80" Background="#FFCECECE" Name="allergieenTextBox"/>
 
             </StackPanel>
-            <Button Margin="0,20,0,0" HorizontalAlignment="Center" x:Name="savePatientBtn" Content="Opslaan" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100">
+            <Button Margin="0,20,0,0" HorizontalAlignment="Center" x:Name="savePatientBtn" Content="Opslaan" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100" Click="savePatientBtn_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
