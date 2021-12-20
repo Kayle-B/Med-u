@@ -20,9 +20,29 @@ namespace Design_test
     /// </summary>
     public partial class editPatient : Page
     {
-        public editPatient()
+        string name;
+        string[] split;
+        public editPatient(string name)
         {
             InitializeComponent();
+            this.name = name;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (name != "")
+            {
+                if (name.Contains(" "))
+                {
+                     split = name.Split(' ');
+                    naamTextBox.Text = split[0];
+                    achternaamTextBox.Text = split[1];
+                }
+                else
+                {
+                    naamTextBox.Text = name;
+                }
+            }
         }
     }
 }

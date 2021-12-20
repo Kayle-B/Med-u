@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Design_test"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="480" Background="white"
-      Title="editPatient">
+      Title="editPatient" Loaded="Page_Loaded">
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>

@@ -39,7 +39,8 @@ namespace Design_test
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
         {
-            main.Content = new editPatient();
+            string name = addPatientTextbox.Text;
+            main.Content = new editPatient(name);
         }
 
         private void patientTextBox_TextChanged(object sender, TextChangedEventArgs e)
