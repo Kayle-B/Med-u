@@ -1,0 +1,91 @@
+﻿<Page x:Class="Design_test.editPatient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Design_test"
+      mc:Ignorable="d" 
+      d:DesignHeight="780" d:DesignWidth="480" Background="white"
+      Title="editPatient">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".4*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".8*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="350*" />
+            <ColumnDefinition Width="30*" />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <Label Content="Toevoegen" HorizontalAlignment="Center" FontSize="45" FontWeight="Bold" Margin="0" Padding="0"/>
+            <Label Content="Persoonsgegevens" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.RowSpan="2" Grid.Column="1">
+            <StackPanel x:Name="Uside" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="0,0,20,0" Name="Ldown">
+                    <StackPanel Width="170">
+                        <Label Panel.ZIndex="1" FontSize="20" Content="Aanhef"/>
+                        <TextBox Background="#FFCECECE" Height="30" Name="aanhefTextBox"/>
+                    </StackPanel>
+
+                    <StackPanel Width="170">
+                        <Label Panel.ZIndex="1" FontSize="20" Content="Tussenvoegsel"/>
+                        <TextBox Background="#FFCECECE" Height="30" Name="voegselTextBox"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Name="Rdown">
+                    <StackPanel Width="170">
+                        <Label Panel.ZIndex="1" FontSize="20" Content="Voornaam" />
+                        <TextBox Background="#FFCECECE" Height="30" Name="naamTextBox"/>
+                    </StackPanel>
+
+                    <StackPanel Width="170">
+                        <Label Panel.ZIndex="1" FontSize="20" Content="Achternaam" />
+                        <TextBox Background="#FFCECECE" Height="30" Name="achternaamTextBox"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Width="360">
+                <Label Panel.ZIndex="1" FontSize="20" Content="Email"/>
+                <TextBox Background="#FFCECECE" Height="30" Name="emailTextBox"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Width="170" Margin="0,0,20,0">
+                    <Label Panel.ZIndex="1" FontSize="20" Content="Telefoonnummer"/>
+                    <TextBox Background="#FFCECECE" Height="30" Name="telefoonTextBox"/>
+                </StackPanel>
+
+                <StackPanel Width="170">
+                    <Label Panel.ZIndex="1" FontSize="20" Content="BSN-nummer"/>
+                    <TextBox Background="#FFCECECE" Height="30" Name="bsnTextBox"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label Content="Overige Informatie" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+
+            <StackPanel HorizontalAlignment="Center">
+                <Label Content="Allergieen" FontSize="20"/>
+                <TextBox Width="360" Height="80" Background="#FFCECECE" Name="allergieenTextBox"/>
+
+            </StackPanel>
+            <Button Margin="0,20,0,0" HorizontalAlignment="Center" x:Name="savePatientBtn" Content="Opslaan" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

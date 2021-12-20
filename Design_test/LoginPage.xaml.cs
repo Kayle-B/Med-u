@@ -37,7 +37,7 @@ namespace Design_test
             if (sqlserver.doctor != null)
             {
                 sqlserver.doctor.getPatientForDoctor();
-                main.Content = new homePage(this.sqlserver, sqlserver.doctor);
+                main.Content = new homePage(main, this.sqlserver, sqlserver.doctor);
             }
             else
             {

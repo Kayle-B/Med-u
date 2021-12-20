@@ -25,11 +25,13 @@ namespace Design_test
         Doctor doctor;
         SQLServer sQLServer;
         List<Patient> searchPatient = new List<Patient>();
+        System.Windows.Controls.Frame main;
 
 
-        public homePage(SQLServer sQLServer, Doctor doctor)
+        public homePage(System.Windows.Controls.Frame main, SQLServer sQLServer, Doctor doctor)
         {
             InitializeComponent();
+            this.main = main;
             this.sQLServer = sQLServer;
             this.doctor = doctor;
             patientCountLabel.Content = doctor.Patients.Count();
@@ -37,28 +39,53 @@ namespace Design_test
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            doctor.getPatientForDoctor();
-            if (patientTextBox.Text != "")
-            {
-                foreach (var patient in doctor.Patients)
-                {
-                    if (patient.name.ToLower().Contains(patientTextBox.Text.ToLower()))
-                    {
-                        MessageBox.Show(patient.name);
-                    }
-
-                }
-            }
+            main.Content = new editPatient();
         }
 
         private void patientTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            userNameLabel.Content = doctor.name;
+        }
+
+        private void patientComboBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (patientComboBox.Text != null)
+            {
+                patientComboBox.Items.Clear();
+                doctor.getPatientForDoctor();
+                if (patientComboBox.Text != "")
+                {
+                    foreach (var patient in doctor.Patients)
+                    {
+                        if (patient.name.ToLower().Contains(patientComboBox.Text.ToLower()))
+                        {
+                            patientComboBox.Items.Add(patient.name);
+                            patientComboBox.IsDropDownOpen = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void patientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (patientComboBox.SelectedItem == null)
+            {
+                zNameRectangle.Height = 120;
+                detailBtn.Visibility = Visibility.Hidden;
+                medListBtn.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                zNameRectangle.Height = 150;
+                detailBtn.Visibility = Visibility.Visible;
+                medListBtn.Visibility = Visibility.Visible;
+            }
         }
     }
 }

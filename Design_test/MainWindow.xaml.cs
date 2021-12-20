@@ -43,8 +43,7 @@ namespace Design_test
 
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
-            // MAIN NEEDS TO GET DOCTOR CLASS SO IT CAN PUSH IT WHEN OPENING WINDOW
-            Main.Content = new homePage(sqlserver, sqlserver.doctor);
+            Main.Content = new homePage(this.Main, sqlserver, sqlserver.doctor);
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Design_test"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="480"
-      Title="homePage" Background="white">
+      Title="homePage" Background="white" Loaded="Page_Loaded">
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
@@ -20,24 +20,37 @@
             <ColumnDefinition Width="350*" />
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
-        <!--Header-->
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Height="120" VerticalAlignment="Top">
-            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="#FFE67937" Height="auto"/>
-            <Image HorizontalAlignment="Center" Width="100" Height="60" Source="MED-U-logo-white.jpg" Stretch="Fill" />
-        </Grid>
 
 
+
+        <!-- Name label -->
+        <Label x:Name="userNameLabel" Content="Name" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" FontSize="20"/>
         <!--Zoek Op naam-->
         <Grid Panel.ZIndex="0" Grid.Row="1" Grid.Column="1" >
-            <Rectangle  Panel.ZIndex="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="120" Fill="#FFE67937" RadiusX="20" RadiusY="20"/>
+            <Rectangle x:Name="zNameRectangle" Panel.ZIndex="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Height="120" Fill="#FFE67937" RadiusX="20" RadiusY="20"/>
             <Label Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0" Panel.ZIndex="1" Content="Zoek op naam" Foreground="White" FontWeight="Bold" FontSize="20"/>
             <Grid Margin="0,60,0,0" VerticalAlignment="Top">
-                <Rectangle  Panel.ZIndex="1" RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="37" Stroke="White" Width="294" Fill="White"/>
-                <TextBox x:Name="patientTextBox" Margin="0,5,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" TextWrapping="Wrap" Width="278" Height="26" BorderBrush="White" TextChanged="patientTextBox_TextChanged"/>
-                <Button Margin="250,0,0,0" Panel.ZIndex="2" Height="23" Width="26" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
-                    <Image Source="zoekuh.jpg"/>
-                </Button>
+                <Rectangle Panel.ZIndex="1" RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="37" Stroke="White" Width="294" Fill="White"/>
+                <ComboBox x:Name="patientComboBox" Margin="0,0,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" Width="280" Height="26" BorderBrush="{x:Null}" Background="White" IsEditable="True" KeyUp="patientComboBox_KeyUp" SelectionChanged="patientComboBox_SelectionChanged" />
+
             </Grid>
+            <StackPanel Margin="0,60,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="medListBtn" Content="Med lijst" Height="25" Width="100" HorizontalAlignment="Left" Visibility="Hidden">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button Margin="90,0,0,0" x:Name="detailBtn" Content="Detail" Height="25" Width="100" HorizontalAlignment="Right" Visibility="Hidden">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
         </Grid>
 
         <!--Overzicht-->
@@ -63,14 +76,14 @@
                     <ImageBrush Stretch="Fill" ImageSource="Voeg_patient_toe.jpg"/>
                 </Border.Background>
             </Border>
-            <Label Panel.ZIndex="1" Margin="10,0,0,0" Content="Voeg patiënt toe" Foreground="White" FontWeight="Bold" FontSize="25" Width="206"/>
+            <Label VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,0,0,0" Content="Voeg patiënt toe" Foreground="White" FontWeight="Bold" FontSize="25" Width="206" Height="50"/>
 
             <Grid Margin="0,20,0,0" Width="320">
                 <Rectangle Panel.ZIndex="1" HorizontalAlignment="Left" RadiusX="5" RadiusY="5" Height="37" Stroke="White" Width="200" Fill="White"/>
                 <TextBox Panel.ZIndex="1" Margin="5,0,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" Width="188" Height="26" BorderBrush="White"/>
 
 
-                <Button HorizontalAlignment="Right" x:Name="addPatientButton" Content="Add" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100" Click="addPatientButton_Click">
+                <Button Panel.ZIndex="2" HorizontalAlignment="Right" x:Name="addPatientButton" Content="Add" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100" Click="addPatientButton_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>

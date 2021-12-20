@@ -14,10 +14,10 @@ namespace Design_test
         private MySqlDataReader reader;*/
         public SQLServer sQLServer = new SQLServer();
 
-        private int id { get; }
-        private string name { get; }
-        private string lastname { get; }
-        private string email { get; }
+        public int id { get; }
+        public string name { get; }
+        public string lastname { get; }
+        public string email { get; }
         private List<Patient> patients;
         public List<Patient> Patients { get { return patients; } }
 
