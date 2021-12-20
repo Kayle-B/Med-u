@@ -96,6 +96,7 @@ namespace Design_test
         {
             int index = patientComboBox.SelectedIndex;
             var id = searchedId[index];
+            main.Content = new editPatient(id);
         }
     }
 }

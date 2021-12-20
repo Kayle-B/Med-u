@@ -37,50 +37,17 @@ namespace Design_test
             conn.Close();
         }
 
-/*        public int getPatientCount()
-        {
-            string query = "SELECT COUNT(*) FROM users";
-            cmd = new MySqlCommand(query, conn);
-            reader = cmd.ExecuteReader();
-
-            if (reader.Read())
-            {
-                patientCount = Convert.ToInt32(reader.GetValue(0));
-            }
-            reader.Close();
-
-            return patientCount;
-        }*/
-
-/*        public List<Patient> getPatientList(string name)
-        {
-            string query = string.Format("SELECT * FROM users WHERE name='{0}'", name);
-            cmd = new MySqlCommand(query, conn);
-            reader = cmd.ExecuteReader();
-            List<Patient> patients = new List<Patient>();
-
-            while (reader.Read())
-            {
-*//*                patients.Add(new Patient(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), (int)reader.GetValue(5)));
-*//*            }
-            reader.Close();
-
-            return patients;
-        }*/
-
         public MySqlDataReader executeQeury(string query)
         {
-            if (reader != null)
+            if (conn.State.ToString() == "Open")
             {
-                if (!reader.IsClosed)
-                {
-                    reader.Close();
-                }
+                closeConnection();
+                openConnection();
             }
+
 
             cmd = new MySqlCommand(query, conn);
             reader = cmd.ExecuteReader();
-            var read = reader;
             return reader;
         }
 

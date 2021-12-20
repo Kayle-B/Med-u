@@ -21,20 +21,41 @@ namespace Design_test
     /// </summary>
     public partial class editPatient : Page
     {
-        public editPatient()
+        SQLServer sQLServer = new SQLServer();
+        Patient patient;
+        string query;
+
+        int id;
+        string salutation;
+        string name;
+        string lastname;
+        string insertion;
+        string email;
+        string phone;
+        string BSN;
+        string allergies;
+
+
+        public editPatient(int id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            patient = new Patient(id, name, lastname);
+            this.patient = patient.getPatient(id);
+            
 
+            naamTextBox.Text = patient.name;
+            achternaamTextBox.Text = patient.lastname;
         }
 
-        private void savePatientBtn_Click(object sender, RoutedEventArgs e)
+        private void updatePatientBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            patient.updatePatient(this.id, naamTextBox.Text, achternaamTextBox.Text);
+            MessageBox.Show("Changed patient");
         }
-
     }
 }
