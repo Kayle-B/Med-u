@@ -19,14 +19,14 @@ namespace Design_test
     /// <summary>
     /// Interaction logic for editPatient.xaml
     /// </summary>
-    public partial class editPatient : Page
+    public partial class addPatient : Page
     {
         string name;
         string[] split;
         SQLServer sQLServer = new SQLServer();
         Doctor doctor;
 
-        public editPatient(string name, Doctor doctor)
+        public addPatient(string name, Doctor doctor)
         {
             InitializeComponent();
             this.name = name;
@@ -71,10 +71,9 @@ namespace Design_test
                 string query = string.Format("SELECT * FROM patient WHERE name = '{0}' && lastname='{1}';", name, lastname);
                 if (sQLServer.executeQeury(query).HasRows != true)
                 {
-                    sQLServer.reader.Close();
                     query = string.Format("INSERT INTO patient(name, lastname, age, doctor_id)VALUES('{0}', '{1}', '{2}', {3});", name, lastname, 20, doctor.id);
                     sQLServer.reader = sQLServer.executeQeury(query);
-                    sQLServer.reader.Close();
+                    MessageBox.Show("Nieuw patient toegevoegd");
                 }
                 else
                 {

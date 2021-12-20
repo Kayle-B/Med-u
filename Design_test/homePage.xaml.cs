@@ -26,6 +26,7 @@ namespace Design_test
         SQLServer sQLServer;
         List<Patient> searchPatient = new List<Patient>();
         System.Windows.Controls.Frame main;
+        List<int> searchedId = new List<int>();
 
 
         public homePage(System.Windows.Controls.Frame main, SQLServer sQLServer, Doctor doctor)
@@ -40,7 +41,7 @@ namespace Design_test
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
         {
             string name = addPatientTextbox.Text;
-            main.Content = new editPatient(name, doctor);
+            main.Content = new addPatient(name, doctor);
         }
 
         private void patientTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -55,6 +56,7 @@ namespace Design_test
 
         private void patientComboBox_KeyUp(object sender, KeyEventArgs e)
         {
+            searchedId.Clear();
             if (patientComboBox.Text != null)
             {
                 patientComboBox.Items.Clear();
@@ -65,6 +67,7 @@ namespace Design_test
                     {
                         if (patient.name.ToLower().Contains(patientComboBox.Text.ToLower()))
                         {
+                            searchedId.Add(patient.id);
                             patientComboBox.Items.Add(patient.name);
                             patientComboBox.IsDropDownOpen = true;
                         }
@@ -87,6 +90,12 @@ namespace Design_test
                 detailBtn.Visibility = Visibility.Visible;
                 medListBtn.Visibility = Visibility.Visible;
             }
+        }
+
+        private void detailBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int index = patientComboBox.SelectedIndex;
+            var id = searchedId[index];
         }
     }
 }

@@ -70,6 +70,14 @@ namespace Design_test
 
         public MySqlDataReader executeQeury(string query)
         {
+            if (reader != null)
+            {
+                if (!reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+
             cmd = new MySqlCommand(query, conn);
             reader = cmd.ExecuteReader();
             var read = reader;

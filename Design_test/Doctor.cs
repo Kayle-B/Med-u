@@ -22,9 +22,9 @@ namespace Design_test
         public List<Patient> Patients { get { return patients; } }
 
 
-        public void addPatient(string name, string lastname, int age)
+        public void addPatient(int id, string name, string lastname, int age)
         {
-            this.patients.Add(new Patient(name, lastname, age));
+            this.patients.Add(new Patient(id, name, lastname, age));
         }
 
         public Doctor(int id, string name, string lastname, string email)
@@ -52,7 +52,7 @@ namespace Design_test
 
             while (reader.Read())
             {
-                this.addPatient(reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
+                this.addPatient((int)reader.GetValue(0),reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
             }
             reader.Close();
             return this;

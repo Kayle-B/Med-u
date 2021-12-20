@@ -43,7 +43,7 @@
                     </Button.Resources>
                 </Button>
 
-                <Button Margin="90,0,0,0" x:Name="detailBtn" Content="Detail" Height="25" Width="100" HorizontalAlignment="Right" Visibility="Hidden">
+                <Button Margin="90,0,0,0" x:Name="detailBtn" Content="Detail" Height="25" Width="100" HorizontalAlignment="Right" Visibility="Hidden" Click="detailBtn_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
