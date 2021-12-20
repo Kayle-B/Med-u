@@ -16,13 +16,13 @@ namespace Design_test
     /// </summary>
     public partial class MainWindow : Window
     {
-        SQLServer sQLConnection = new SQLServer();
+        SQLServer sqlserver = new SQLServer();
         public MainWindow()
         {
             InitializeComponent();
             hamburgerMenu.Visibility = Visibility.Collapsed;
             openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
-            Main.Content = new LoginPage(Main);
+            Main.Content = new LoginPage(Main, sqlserver);
         }
 
         private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
@@ -44,27 +44,32 @@ namespace Design_test
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
             // MAIN NEEDS TO GET DOCTOR CLASS SO IT CAN PUSH IT WHEN OPENING WINDOW
-/*            Main.Content = new homePage(doctor);
-*/        }
+            Main.Content = new homePage(sqlserver, sqlserver.doctor);
+            hamburgerMenu.Visibility = Visibility.Collapsed;
+        }
 
         private void patientOverzichtBtn_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new patientOverzicht();
+            hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
         private void patientToevoegenBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
         private void instellingBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
         private void helpBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
         private void Main_ContentRendered(object sender, EventArgs e)

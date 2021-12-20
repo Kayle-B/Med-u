@@ -20,24 +20,25 @@ namespace Design_test
     /// </summary>
     public partial class LoginPage : Page
     {
-        SQLServer sqlserver = new SQLServer();
+        SQLServer sqlserver;
         System.Windows.Controls.Frame main;
         
-        public LoginPage(System.Windows.Controls.Frame main)
+        public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver)
         {
             InitializeComponent();
             this.main = main;
+            this.sqlserver = sqlserver;
         }
         
         private void loginBtn(object sender, RoutedEventArgs e)
         {
             sqlserver.openConnection();
-            Doctor doctor = sqlserver.loginDoctor(usernameTextBox.Text, passwordTextBox.Text);
-            if (doctor != null)
+            sqlserver.doctor = sqlserver.loginDoctor(usernameTextBox.Text, passwordTextBox.Text);
+            if (sqlserver.doctor != null)
             {
-                doctor.getPatientForDoctor();
+                sqlserver.doctor.getPatientForDoctor();
                 sqlserver.closeConnection();
-                main.Content = new homePage(this.sqlserver, doctor);
+                main.Content = new homePage(this.sqlserver, sqlserver.doctor);
             }
             else
             {

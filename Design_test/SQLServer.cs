@@ -15,7 +15,7 @@ namespace Design_test
         private MySqlCommand cmd;
         private MySqlDataReader reader;
         private int patientCount;
-        private Doctor doctor;
+        public Doctor doctor;
 
 
 
