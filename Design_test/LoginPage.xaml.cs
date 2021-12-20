@@ -37,7 +37,6 @@ namespace Design_test
             if (sqlserver.doctor != null)
             {
                 sqlserver.doctor.getPatientForDoctor();
-                sqlserver.closeConnection();
                 main.Content = new homePage(this.sqlserver, sqlserver.doctor);
             }
             else

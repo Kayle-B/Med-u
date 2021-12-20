@@ -9,9 +9,10 @@ namespace Design_test
 {
     public class Doctor
     {
-        private MySqlConnection conn { get; }
+/*        private MySqlConnection conn { get; }
         private MySqlCommand cmd;
-        private MySqlDataReader reader;
+        private MySqlDataReader reader;*/
+        public SQLServer sQLServer = new SQLServer();
 
         private int id { get; }
         private string name { get; }
@@ -26,9 +27,8 @@ namespace Design_test
             this.patients.Add(new Patient(name, lastname, age));
         }
 
-        public Doctor(MySqlConnection conn, int id, string name, string lastname, string email)
+        public Doctor(int id, string name, string lastname, string email)
         {
-            this.conn = conn;
             this.id = id;
             this.name = name;
             this.lastname = lastname;
@@ -37,11 +37,6 @@ namespace Design_test
 
         public Doctor getPatientForDoctor()
         {
-            // WHY IS THE CONN CLOSED ON THE SECOND SEARCH IN HOMEPAGE FIX THIS
-            if (conn.State.ToString() == "Closed")
-            {
-                conn.Open();
-            }
             if (this.patients == null)
             {
                 this.patients = new List<Patient>();
@@ -51,8 +46,10 @@ namespace Design_test
                 this.patients.Clear();
             }
             string query = string.Format("SELECT * FROM patient WHERE doctor_id = {0}", this.id);
-            cmd = new MySqlCommand(query, this.conn);
-            reader = cmd.ExecuteReader();
+
+            //Opens reader
+            MySqlDataReader reader = sQLServer.executeQeury(query);
+
             while (reader.Read())
             {
                 this.addPatient(reader.GetString(1), reader.GetString(2), reader.GetInt32(3));

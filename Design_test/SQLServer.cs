@@ -72,7 +72,6 @@ namespace Design_test
         {
             cmd = new MySqlCommand(query, conn);
             reader = cmd.ExecuteReader();
-            reader.Close();
             return reader;
         }
 
@@ -83,7 +82,7 @@ namespace Design_test
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                doctor = new Doctor(conn, reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                doctor = new Doctor(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
             }
             reader.Close();
             return doctor;
