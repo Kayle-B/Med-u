@@ -96,6 +96,7 @@ namespace Design_test
 
         private void patientComboBox_DropDownOpened(object sender, EventArgs e)
         {
+            patientComboBox.Items.Clear();
             if (patientComboBox.Text == "")
             {
                 foreach (var patient in doctor.Patients)

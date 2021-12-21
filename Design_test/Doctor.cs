@@ -9,9 +9,6 @@ namespace Design_test
 {
     public class Doctor
     {
-/*        private MySqlConnection conn { get; }
-        private MySqlCommand cmd;
-        private MySqlDataReader reader;*/
         public SQLServer sQLServer = new SQLServer();
 
         public int id { get; }
@@ -22,18 +19,7 @@ namespace Design_test
         public List<Patient> Patients { get { return patients; } }
 
 
-        public void addPatient(Patient patient
-            //int id, string username
-            //, string firstname,
-            //string lastname,
-            //string salutation,
-            //string prefix, int age,
-            //string BSN,
-            //string email,
-            //string phone,
-            //string allergies,
-            //int doctor_id
-            )
+        public void addPatient(Patient patient)
         {
             this.patients.Add(new Patient(id, patient.username, patient.firstname, patient.lastname, patient.salutation, patient.prefix, 20, patient.bsn, patient.email, patient.phone, patient.allergies, this.id));
         }
@@ -58,7 +44,6 @@ namespace Design_test
             }
             string query = string.Format("SELECT * FROM patient WHERE doctor_id = {0}", this.id);
 
-            //Opens reader
             MySqlDataReader reader = sQLServer.executeQeury(query);
             while (reader.Read())
             {
