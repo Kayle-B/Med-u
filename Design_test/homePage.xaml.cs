@@ -51,10 +51,11 @@ namespace Design_test
 
         private void patientComboBox_KeyUp(object sender, KeyEventArgs e)
         {
-            searchedId.Clear();
+            patientComboBox.Items.Clear();
+
             if (patientComboBox.Text != null)
             {
-                patientComboBox.Items.Clear();
+                searchedId.Clear();
                 doctor.getPatientForDoctor();
                 if (patientComboBox.Text != "")
                 {
@@ -64,9 +65,17 @@ namespace Design_test
                         {
                             searchedId.Add(patient.id);
                             patientComboBox.Items.Add(patient.firstname);
-                            patientComboBox.IsDropDownOpen = true;
                         }
                     }
+                    if (searchedId.Count != 0)
+                    {
+                        patientComboBox.IsDropDownOpen = true;
+                    }
+                    else
+                    {
+                        patientComboBox.IsDropDownOpen = false;
+                    }
+
                 }
             }
         }
@@ -103,7 +112,18 @@ namespace Design_test
                 {
                     searchedId.Add(patient.id);
                     patientComboBox.Items.Add(patient.firstname);
-                    patientComboBox.IsDropDownOpen = true;
+                }
+                patientComboBox.IsDropDownOpen = true;
+            }
+            else if (patientComboBox.Text != null)
+            {
+                foreach (var patient in doctor.Patients)
+                {
+                    if (patientComboBox.Text.ToLower().Contains(patient.firstname.ToLower())) ;
+                    {
+                        searchedId.Add(patient.id);
+                        patientComboBox.Items.Add(patient.firstname);
+                    }
                 }
             }
         }
