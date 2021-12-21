@@ -22,22 +22,24 @@ namespace Design_test
     {
         SQLServer sqlserver;
         System.Windows.Controls.Frame main;
+        Doctor doctor;
         
-        public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver)
+        public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver, Doctor doctor)
         {
             InitializeComponent();
             this.main = main;
             this.sqlserver = sqlserver;
+            this.doctor = doctor;
         }
         
         private void loginBtn(object sender, RoutedEventArgs e)
         {
-            sqlserver.openConnection();
-            sqlserver.doctor = sqlserver.loginDoctor(usernameTextBox.Text, passwordTextBox.Text);
-            if (sqlserver.doctor != null)
+             sqlserver.openConnection();
+            doctor = doctor.loginDoctor(usernameTextBox.Text, passwordTextBox.Text);
+            if (doctor != null)
             {
-                sqlserver.doctor.getPatientForDoctor();
-                main.Content = new homePage(main, this.sqlserver, sqlserver.doctor);
+                doctor.getPatientForDoctor();
+                main.Content = new homePage(main, this.sqlserver, doctor);
             }
             else
             {

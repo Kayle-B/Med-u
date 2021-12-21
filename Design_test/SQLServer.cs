@@ -14,9 +14,6 @@ namespace Design_test
         private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = database_medu; UID = root; Password=");
         private MySqlCommand cmd;
         public MySqlDataReader reader;
-        public Doctor doctor;
-
-
 
         public void openConnection()
         {
@@ -24,11 +21,6 @@ namespace Design_test
             {
                 conn.Open();
             }
-        }
-
-        public MySqlConnection getConnection()
-        {
-            return conn;
         }
 
         public void closeConnection()
@@ -54,22 +46,7 @@ namespace Design_test
             openConnection();
         }
 
-        public Doctor loginDoctor(string username, string password)
-        {
-            string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", username, password);
-            cmd = new MySqlCommand(query, conn);
-            if (conn.State.ToString() == "Open")
-            {
-                reastablishConnection();
-            }
-            reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                doctor = new Doctor(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
-            }
-            reader.Close();
-            return doctor;
-        }
+
 
 
 

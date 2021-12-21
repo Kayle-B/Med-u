@@ -46,16 +46,16 @@ namespace Design_test
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            userNameLabel.Content = doctor.name;
+            userNameLabel.Content = doctor.First_name;
         }
 
         private void patientComboBox_KeyUp(object sender, KeyEventArgs e)
         {
             patientComboBox.Items.Clear();
+            searchedId.Clear();
 
             if (patientComboBox.Text != null)
             {
-                searchedId.Clear();
                 doctor.getPatientForDoctor();
                 if (patientComboBox.Text != "")
                 {
@@ -106,6 +106,7 @@ namespace Design_test
         private void patientComboBox_DropDownOpened(object sender, EventArgs e)
         {
             patientComboBox.Items.Clear();
+            searchedId.Clear();
             if (patientComboBox.Text == "")
             {
                 foreach (var patient in doctor.Patients)

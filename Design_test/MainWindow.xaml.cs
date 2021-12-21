@@ -17,12 +17,14 @@ namespace Design_test
     public partial class MainWindow : Window
     {
         SQLServer sqlserver = new SQLServer();
+        Doctor doctor = new Doctor();
+
         public MainWindow()
         {
             InitializeComponent();
             hamburgerMenu.Visibility = Visibility.Collapsed;
             openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
-            Main.Content = new LoginPage(Main, sqlserver);
+            Main.Content = new LoginPage(Main, sqlserver, doctor);
         }
 
         private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
@@ -43,7 +45,7 @@ namespace Design_test
 
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new homePage(this.Main, sqlserver, sqlserver.doctor);
+            Main.Content = new homePage(this.Main, sqlserver, doctor);
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
@@ -81,8 +83,8 @@ namespace Design_test
 
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            sqlserver.doctor = null;
-            Main.Content = new LoginPage(Main, sqlserver);
+            doctor = new Doctor();
+            Main.Content = new LoginPage(Main, sqlserver, doctor);
             hamburgerMenu.Visibility = Visibility.Collapsed;
             openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
         }
