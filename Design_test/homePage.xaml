@@ -31,7 +31,7 @@
             <Label Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0" Panel.ZIndex="1" Content="Zoek op naam" Foreground="White" FontWeight="Bold" FontSize="20"/>
             <Grid Margin="0,60,0,0" VerticalAlignment="Top">
                 <Rectangle Panel.ZIndex="1" RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="37" Stroke="White" Width="294" Fill="White"/>
-                <ComboBox x:Name="patientComboBox" Margin="0,0,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" Width="280" Height="26" BorderBrush="{x:Null}" Background="White" IsEditable="True" KeyUp="patientComboBox_KeyUp" SelectionChanged="patientComboBox_SelectionChanged" />
+                <ComboBox x:Name="patientComboBox" Margin="0,0,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" Width="280" Height="26" BorderBrush="{x:Null}" Background="White" IsEditable="True" KeyUp="patientComboBox_KeyUp" SelectionChanged="patientComboBox_SelectionChanged" DropDownOpened="patientComboBox_DropDownOpened" />
 
             </Grid>
             <StackPanel Margin="0,60,0,0" Orientation="Horizontal" HorizontalAlignment="Center">

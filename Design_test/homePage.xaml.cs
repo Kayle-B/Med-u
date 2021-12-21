@@ -44,11 +44,6 @@ namespace Design_test
             main.Content = new addPatient(name, doctor);
         }
 
-        private void patientTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             userNameLabel.Content = doctor.name;
@@ -97,6 +92,19 @@ namespace Design_test
             int index = patientComboBox.SelectedIndex;
             var id = searchedId[index];
             main.Content = new editPatient(id);
+        }
+
+        private void patientComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            if (patientComboBox.Text == "")
+            {
+                foreach (var patient in doctor.Patients)
+                {
+                    searchedId.Add(patient.id);
+                    patientComboBox.Items.Add(patient.name);
+                    patientComboBox.IsDropDownOpen = true;
+                }
+            }
         }
     }
 }

@@ -41,20 +41,28 @@ namespace Design_test
         {
             if (conn.State.ToString() == "Open")
             {
-                closeConnection();
-                openConnection();
+                reastablishConnection();
             }
-
 
             cmd = new MySqlCommand(query, conn);
             reader = cmd.ExecuteReader();
             return reader;
         }
 
+        public void reastablishConnection()
+        {
+            closeConnection();
+            openConnection();
+        }
+
         public Doctor loginDoctor(string username, string password)
         {
             string query = string.Format("SELECT * FROM doctor WHERE name='{0}' && password='{1}'", username, password);
             cmd = new MySqlCommand(query, conn);
+            if (conn.State.ToString() == "Open")
+            {
+                reastablishConnection();
+            }
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
