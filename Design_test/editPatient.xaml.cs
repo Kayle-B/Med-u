@@ -44,11 +44,9 @@ namespace Design_test
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            patient = new Patient(id, name, lastname);
-            this.patient = patient.getPatient(id);
-            
-
-            naamTextBox.Text = patient.name;
+            patient = new Patient(id);
+            patient.getPatient(id);
+            naamTextBox.Text = patient.firstname;
             achternaamTextBox.Text = patient.lastname;
         }
 

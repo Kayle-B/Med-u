@@ -11,10 +11,9 @@ namespace Design_test
 {
     public class SQLServer
     {
-        private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = pf2; UID = root; Password=");
+        private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = database_medu; UID = root; Password=");
         private MySqlCommand cmd;
         public MySqlDataReader reader;
-        private int patientCount;
         public Doctor doctor;
 
 
@@ -57,7 +56,7 @@ namespace Design_test
 
         public Doctor loginDoctor(string username, string password)
         {
-            string query = string.Format("SELECT * FROM doctor WHERE name='{0}' && password='{1}'", username, password);
+            string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", username, password);
             cmd = new MySqlCommand(query, conn);
             if (conn.State.ToString() == "Open")
             {
@@ -71,6 +70,9 @@ namespace Design_test
             reader.Close();
             return doctor;
         }
+
+
+
 
     }
 }

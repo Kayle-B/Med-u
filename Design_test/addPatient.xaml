@@ -32,24 +32,24 @@
                 <StackPanel Margin="0,0,20,0" Name="Ldown">
                     <StackPanel Width="170">
                         <Label Panel.ZIndex="1" FontSize="20" Content="Aanhef"/>
-                        <TextBox Background="#FFCECECE" Height="30" Name="aanhefTextBox"/>
+                        <TextBox Background="#FFCECECE" Height="30" x:Name="salutationTextBox"/>
                     </StackPanel>
 
                     <StackPanel Width="170">
                         <Label Panel.ZIndex="1" FontSize="20" Content="Tussenvoegsel"/>
-                        <TextBox Background="#FFCECECE" Height="30" Name="voegselTextBox"/>
+                        <TextBox Background="#FFCECECE" Height="30" x:Name="prefixTextBox"/>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel Name="Rdown">
                     <StackPanel Width="170">
                         <Label Panel.ZIndex="1" FontSize="20" Content="Voornaam" />
-                        <TextBox Background="#FFCECECE" Height="30" Name="naamTextBox"/>
+                        <TextBox Background="#FFCECECE" Height="30" x:Name="firstnameTextBox"/>
                     </StackPanel>
 
                     <StackPanel Width="170">
                         <Label Panel.ZIndex="1" FontSize="20" Content="Achternaam" />
-                        <TextBox Background="#FFCECECE" Height="30" Name="achternaamTextBox"/>
+                        <TextBox Background="#FFCECECE" Height="30" x:Name="lastnameTextBox"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -61,7 +61,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Width="170" Margin="0,0,20,0">
                     <Label Panel.ZIndex="1" FontSize="20" Content="Telefoonnummer"/>
-                    <TextBox Background="#FFCECECE" Height="30" Name="telefoonTextBox"/>
+                    <TextBox Background="#FFCECECE" Height="30" x:Name="phoneTextBox"/>
                 </StackPanel>
 
                 <StackPanel Width="170">
@@ -76,7 +76,7 @@
 
             <StackPanel HorizontalAlignment="Center">
                 <Label Content="Allergieen" FontSize="20"/>
-                <TextBox Width="360" Height="80" Background="#FFCECECE" Name="allergieenTextBox"/>
+                <TextBox Width="360" Height="80" Background="#FFCECECE" x:Name="allergyTextBox"/>
 
             </StackPanel>
             <Button Margin="0,20,0,0" HorizontalAlignment="Center" x:Name="savePatientBtn" Content="Opslaan" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="100" Click="savePatientBtn_Click">

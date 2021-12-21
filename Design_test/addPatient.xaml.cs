@@ -42,44 +42,43 @@ namespace Design_test
                 if (name.Contains(" "))
                 {
                      split = name.Split(' ');
-                    naamTextBox.Text = split[0];
-                    achternaamTextBox.Text = split[1];
+                    firstnameTextBox.Text = split[0];
+                    lastnameTextBox.Text = split[1];
                 }
                 else
                 {
-                    naamTextBox.Text = name;
+                    firstnameTextBox.Text = name;
                 }
             }
         }
 
         private void savePatientBtn_Click(object sender, RoutedEventArgs e)
         {
-            string salutation = aanhefTextBox.Text;
-            string name = naamTextBox.Text;
-            string lastname = achternaamTextBox.Text;
-            string insertion = voegselTextBox.Text;
+            string salutation = salutationTextBox.Text;
+            string firstname = firstnameTextBox.Text;
+            string lastname = lastnameTextBox.Text;
+            string prefix = prefixTextBox.Text;
             string email = emailTextBox.Text;
-            string phone = telefoonTextBox.Text;
+            string phone = phoneTextBox.Text;
             string BSN = bsnTextBox.Text;
-            string allergies = allergieenTextBox.Text;
+            string allergies = allergyTextBox.Text;
 
-            patient = new Patient(0, name, lastname);
+            patient = new Patient(0, firstname, firstname, lastname, salutation, prefix, 20, BSN,  email,  phone,  allergies, this.doctor.id);
 
 
 
-            if (name == "" || lastname == "" || email == "" || phone == "" || BSN == "")
+            if (firstname == "" || lastname == "" || email == "" || BSN == "")
             {
                 MessageBox.Show("Zorg ervoor dat u alles invuld!");
                 return;
             }
             else
             {
-                string query = string.Format("SELECT * FROM patient WHERE name = '{0}' && lastname='{1}';", name, lastname);
-                
+                string query = string.Format("SELECT * FROM patient WHERE first_name = '{0}' && last_name='{1}';", firstname, lastname);
 
                 if (sQLServer.executeQeury(query).HasRows != true)
                 {
-                    patient.savePatient(name, lastname, this.doctor.id);
+                    patient.savePatient(patient);
                     MessageBox.Show("Patient toegevoegd");
                 }
                 else
@@ -87,8 +86,6 @@ namespace Design_test
                     MessageBox.Show("Patient bestaat al");
                 }
             }
-
-
         }
     }
 }

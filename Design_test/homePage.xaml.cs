@@ -60,10 +60,10 @@ namespace Design_test
                 {
                     foreach (var patient in doctor.Patients)
                     {
-                        if (patient.name.ToLower().Contains(patientComboBox.Text.ToLower()))
+                        if (patient.firstname.ToLower().Contains(patientComboBox.Text.ToLower()))
                         {
                             searchedId.Add(patient.id);
-                            patientComboBox.Items.Add(patient.name);
+                            patientComboBox.Items.Add(patient.firstname);
                             patientComboBox.IsDropDownOpen = true;
                         }
                     }
@@ -101,7 +101,7 @@ namespace Design_test
                 foreach (var patient in doctor.Patients)
                 {
                     searchedId.Add(patient.id);
-                    patientComboBox.Items.Add(patient.name);
+                    patientComboBox.Items.Add(patient.firstname);
                     patientComboBox.IsDropDownOpen = true;
                 }
             }

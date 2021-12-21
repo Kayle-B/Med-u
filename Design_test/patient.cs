@@ -11,46 +11,75 @@ namespace Design_test
         SQLServer sQLServer = new SQLServer();
 
         public int id { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string gender { get; set; }
-        public string lastname { get; set; }
-        public int age { get; set; }
+        public int doctor_id { get; set; }
 
-        public Patient(int id, string name, string lastname/*, int age*/)
+        public string username { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string? salutation { get; set; }
+        public string? prefix { get; set; }
+        public int age { get; set; }
+        public string bsn { get; set; }
+        public string email { get; set; }
+        public string? phone { get; set; }
+        public string? allergies { get; set; }
+
+
+        public Patient(int id,string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
         {
             this.id = id;
-            this.name = name;
+            this.username = username;
+            this.firstname = firstname;
             this.lastname = lastname;
-            //this.age = age;
+            this.salutation = salutation;
+            this.prefix = prefix;
+            this.age = age;
+            this.bsn = bsn;
+            this.email = email;
+            this.phone = phone;
+            this.allergies = allergies;
+            this.doctor_id = doctor_id;
+             
         }
-
+        public Patient(int id)
+        {
+            this.id = id;
+        }
         public Patient getPatient(int id)
         {
-            string query = string.Format("SELECT * FROM patient WHERE id = '{0}'", this.id);
+            string query = string.Format("SELECT * FROM patient WHERE id = '{0}'", id);
 
             sQLServer.reader = sQLServer.executeQeury(query);
-
             while (sQLServer.reader.Read())
             {
-                this.id = (int)sQLServer.reader.GetValue(0);
-                this.name = sQLServer.reader.GetString("name");
-                this.lastname = sQLServer.reader.GetString("lastname");
+                id = (int)sQLServer.reader.GetValue(0);
+                this.firstname = sQLServer.reader.GetString("first_name");
+                this.lastname = sQLServer.reader.GetString("last_name");
+                this.salutation = sQLServer.reader.GetString("salutation");
+                this.prefix = sQLServer.reader.GetString("prefix");
+                this.age = sQLServer.reader.GetInt16("age");
+                this.bsn = sQLServer.reader.GetString("bsn");
+                this.email = sQLServer.reader.GetString("email");
+                this.phone = sQLServer.reader.GetString("phone");
+                this.allergies = sQLServer.reader.GetString("allergies");
+                this.doctor_id = sQLServer.reader.GetInt16("doctor_id");
             }
+
             return this;
         }
 
-        public void savePatient(string name, string lastname, int doctor_id)
+
+        public void savePatient(Patient patient)
         {
-            string query = string.Format("INSERT INTO patient(name, lastname, age, doctor_id)VALUES('{0}', '{1}', '{2}', {3});", name, lastname, 20, doctor_id);
+            string query = string.Format("INSERT INTO `patient` (`first_name`, `last_name`, `salutation`, `prefix`, `age`, `BSN`, `email`, `phone`, `allergies`, `doctor_id`)" +
+                "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}');", this.firstname, this.lastname, this.salutation, this.prefix, this.age, this.bsn, this.email, this.phone, this.allergies, this.doctor_id );
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 
         public void updatePatient(int id, string name, string lastname)
         {
 
-            string query = string.Format("UPDATE patient SET name='{0}', lastname='{1}' WHERE id='{2}'", name, lastname, id);
+            string query = string.Format("UPDATE patient SET first_name='{0}', last_name='{1}' WHERE id='{2}'", name, lastname, id);
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 

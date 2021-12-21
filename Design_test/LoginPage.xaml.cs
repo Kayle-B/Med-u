@@ -41,9 +41,8 @@ namespace Design_test
             }
             else
             {
-                MessageBox.Show("No doctor found with those credentials");
+                MessageBox.Show("Geen dokter met die inloggegevens gevonden");
             }
-
         }
     }
 }
