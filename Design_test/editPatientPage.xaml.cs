@@ -19,7 +19,7 @@ namespace Design_test
     /// <summary>
     /// Interaction logic for editPatient.xaml
     /// </summary>
-    public partial class editPatient : Page
+    public partial class editPatientPage : Page
     {
         SQLServer sQLServer = new SQLServer();
         Patient patient;
@@ -36,7 +36,7 @@ namespace Design_test
         string allergies;
 
 
-        public editPatient(int id)
+        public editPatientPage(int id)
         {
             InitializeComponent();
             this.id = id;

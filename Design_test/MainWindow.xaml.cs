@@ -57,7 +57,7 @@ namespace Design_test
 
         private void patientToevoegenBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new addPatientPage(this.Main, doctor);
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 

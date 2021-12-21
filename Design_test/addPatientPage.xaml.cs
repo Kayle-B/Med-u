@@ -19,25 +19,32 @@ namespace Design_test
     /// <summary>
     /// Interaction logic for editPatient.xaml
     /// </summary>
-    public partial class addPatient : Page
+    public partial class addPatientPage : Page
     {
         string name;
         string[] split;
         SQLServer sQLServer = new SQLServer();
         Doctor doctor;
         Patient patient;
+        System.Windows.Controls.Frame main;
 
 
-        public addPatient(string name, Doctor doctor)
+        public addPatientPage(string name, Doctor doctor)
         {
             InitializeComponent();
             this.name = name;
             this.doctor = doctor;
         }
+        public addPatientPage(System.Windows.Controls.Frame main, Doctor doctor)
+        {
+            InitializeComponent();
+            this.doctor = doctor;
+            this.main= main;
+        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (name != "")
+            if (!string.IsNullOrWhiteSpace(name))
             {
                 if (name.Contains(" "))
                 {

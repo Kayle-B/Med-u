@@ -40,7 +40,7 @@ namespace Design_test
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
         {
             string name = addPatientTextbox.Text;
-            main.Content = new addPatient(name, doctor);
+            main.Content = new addPatientPage(name, doctor);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -99,7 +99,7 @@ namespace Design_test
         {
             int index = patientComboBox.SelectedIndex;
             var id = searchedId[index];
-            main.Content = new editPatient(id);
+            main.Content = new editPatientPage(id);
         }
 
         private void patientComboBox_DropDownOpened(object sender, EventArgs e)

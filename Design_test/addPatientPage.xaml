@@ -1,4 +1,4 @@
-﻿<Page x:Class="Design_test.addPatient"
+﻿<Page x:Class="Design_test.addPatientPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Design_test"
       mc:Ignorable="d" 
       d:DesignHeight="780" d:DesignWidth="480" Background="white"
-      Title="addPatient" Loaded="Page_Loaded">
+      Title="addPatientPage" Loaded="Page_Loaded">
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
