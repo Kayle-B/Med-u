@@ -24,7 +24,6 @@ namespace Design_test
         public string? phone { get; set; }
         public string? allergies { get; set; }
 
-
         public Patient(int id,string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
         {
             this.id = id;
@@ -68,17 +67,61 @@ namespace Design_test
             return this;
         }
 
+        private int generatePassword()
+        {
+            Random rnd = new Random();
+            int randomPass = rnd.Next(5000, 9000);
+
+            return randomPass;
+        }
 
         public void savePatient(Patient patient)
         {
-            string query = string.Format("INSERT INTO `patient` (`first_name`, `last_name`, `salutation`, `prefix`, `age`, `BSN`, `email`, `phone`, `allergies`, `doctor_id`)" +
-                "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}');", this.firstname, this.lastname, this.salutation, this.prefix, this.age, this.bsn, this.email, this.phone, this.allergies, this.doctor_id );
+            int password = generatePassword();
+            string query = string.Format("INSERT INTO `patient` " +
+                "(" +
+                "`username`," +
+                " `password`," +
+                " `first_name`," +
+                " `last_name`," +
+                " `salutation`," +
+                " `prefix`," +
+                " `age`," +
+                " `BSN`," +
+                " `email`," +
+                " `phone`," +
+                " `allergies`," +
+                " `doctor_id`)" +
+                    "VALUES('{0}'," +
+                    " '{1}'," +
+                    " '{2}'," +
+                    " '{3}'," +
+                    " '{4}'," +
+                    " '{5}'," +
+                    " '{6}'," +
+                    " '{7}'," +
+                    " '{8}'," +
+                    " '{9}'," +
+                    " {10}');", 
+                
+                this.firstname, 
+                password, 
+                this.firstname,
+                this.lastname,
+                this.salutation,
+                this.prefix,
+                this.age,
+                this.bsn,
+                this.email,
+                this.phone,
+                this.allergies,
+                this.doctor_id
+                );
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 
         public void updatePatient(int id, string name, string lastname)
         {
-
             string query = string.Format("UPDATE patient SET first_name='{0}', last_name='{1}' WHERE id='{2}'", name, lastname, id);
             sQLServer.reader = sQLServer.executeQeury(query);
         }
