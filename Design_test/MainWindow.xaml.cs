@@ -78,5 +78,13 @@ namespace Design_test
                 openHamburgerMenuBtn.Visibility = Visibility.Visible;
             }
         }
+
+        private void logoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            sqlserver.doctor = null;
+            Main.Content = new LoginPage(Main, sqlserver);
+            hamburgerMenu.Visibility = Visibility.Collapsed;
+            openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
+        }
     }
 }

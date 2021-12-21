@@ -36,7 +36,7 @@
                 <Button x:Name="instellingenBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Instellingen" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="instellingBtn_Click"/>
                 <Button x:Name="helpBtn" Width="225" Margin="5" HorizontalContentAlignment="Left" Content="Help" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Click="helpBtn_Click"/>
             </StackPanel>
-            <Button x:Name="logoutBtn" Height="50" Padding="20,0,0,0" Content="Uitloggen" HorizontalContentAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" Foreground="White" BorderBrush="#FFE67937" Background="#FFE67937"/>
+            <Button x:Name="logoutBtn" Height="50" Padding="20,0,0,0" Content="Uitloggen" HorizontalContentAlignment="Left" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" Foreground="White" BorderBrush="#FFE67937" Background="#FFE67937" Click="logoutBtn_Click"/>
         </Grid>
         
         <!--Header-->
