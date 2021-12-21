@@ -28,7 +28,6 @@ namespace Design_test
         System.Windows.Controls.Frame main;
         List<int> searchedId = new List<int>();
 
-
         public homePage(System.Windows.Controls.Frame main, SQLServer sQLServer, Doctor doctor)
         {
             InitializeComponent();
@@ -105,27 +104,17 @@ namespace Design_test
 
         private void patientComboBox_DropDownOpened(object sender, EventArgs e)
         {
-            patientComboBox.Items.Clear();
-            searchedId.Clear();
+
             if (patientComboBox.Text == "")
             {
+                patientComboBox.Items.Clear();
+                searchedId.Clear();
                 foreach (var patient in doctor.Patients)
                 {
                     searchedId.Add(patient.id);
                     patientComboBox.Items.Add(patient.firstname);
                 }
                 patientComboBox.IsDropDownOpen = true;
-            }
-            else if (patientComboBox.Text != null)
-            {
-                foreach (var patient in doctor.Patients)
-                {
-                    if (patientComboBox.Text.ToLower().Contains(patient.firstname.ToLower())) ;
-                    {
-                        searchedId.Add(patient.id);
-                        patientComboBox.Items.Add(patient.firstname);
-                    }
-                }
             }
         }
     }
