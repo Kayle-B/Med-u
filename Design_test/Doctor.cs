@@ -46,7 +46,20 @@ namespace Design_test
 
         }
 
-        public Doctor loginDoctor(string username, string password)
+        public void loginDoctor()
+        {
+            string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", this.username, this.password);
+            var reader = sQLServer.executeQeury(query);
+            while (reader.Read())
+            {
+                this.id = reader.GetInt16("id");
+                this.first_name = reader.GetString("first_name");
+                this.last_name = reader.GetString("last_name");
+                this.email = reader.GetString("email");
+            }
+        }
+
+        public Doctor alternateLoginDoctor(string username, string password)
         {
             string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", username, password);
             var reader = sQLServer.executeQeury(query);
@@ -55,7 +68,7 @@ namespace Design_test
                 this.id = reader.GetInt16("id");
                 this.first_name = reader.GetString("first_name");
                 this.last_name = reader.GetString("last_name");
-                this.email = reader.GetString("email"); 
+                this.email = reader.GetString("email");
             }
             return this;
         }
@@ -66,7 +79,7 @@ namespace Design_test
         }
 
 
-        public Doctor getPatientForDoctor()
+        public void loadPatients()
         {
             if (this.patients == null)
             {
@@ -103,7 +116,46 @@ namespace Design_test
                 this.addPatient(patient);
             }
             reader.Close();
-            return this;
         }
+
+        /*        public Doctor getPatientForDoctor()
+                {
+                    if (this.patients == null)
+                    {
+                        this.patients = new List<Patient>();
+                    }
+                    else
+                    {
+                        this.patients.Clear();
+                    }
+                    string query = string.Format("SELECT * FROM patient WHERE doctor_id = {0}", this.id);
+
+                    MySqlDataReader reader = sQLServer.executeQeury(query);
+                    while (reader.Read())
+                    {
+                        int prefixPos = reader.GetOrdinal("prefix");
+                        int salutationPos = reader.GetOrdinal("salutation");
+                        int phonePos = reader.GetOrdinal("phone");
+                        int allergiesPos = reader.GetOrdinal("allergies");
+
+                        Patient patient = new Patient(
+                            reader.GetInt16("id"),
+                            reader.GetString("username"),
+                            reader.GetString("first_name"),
+                            reader.GetString("last_name"),
+                            reader.IsDBNull(salutationPos) ? String.Empty : reader.GetString("salutation"),
+                            reader.IsDBNull(prefixPos) ? String.Empty : reader.GetString("prefix"),
+                            reader.GetInt16("age"),
+                            reader.GetString("bsn"),
+                            reader.GetString("email"),
+                            reader.IsDBNull(phonePos) ? String.Empty : reader.GetString("phone"),
+                            reader.IsDBNull(allergiesPos) ? String.Empty : reader.GetString("allergies"),
+                            this.id
+                            );
+                        this.addPatient(patient);
+                    }
+                    reader.Close();
+                    return this;
+                }*/
     }
 }

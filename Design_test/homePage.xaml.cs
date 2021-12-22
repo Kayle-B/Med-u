@@ -34,7 +34,7 @@ namespace Design_test
             this.main = main;
             this.sQLServer = sQLServer;
             this.doctor = doctor;
-            patientCountLabel.Content = doctor.Patients.Count();
+            patientCountLabel.Content = this.doctor.Patients.Count();
         }
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace Design_test
 
             if (patientComboBox.Text != null)
             {
-                doctor.getPatientForDoctor();
+                doctor.loadPatients();
                 if (patientComboBox.Text != "")
                 {
                     foreach (var patient in doctor.Patients)

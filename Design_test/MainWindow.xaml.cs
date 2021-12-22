@@ -45,7 +45,7 @@ namespace Design_test
 
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new homePage(this.Main, sqlserver, doctor);
+            Main.Content = new homePage(this.Main, this.sqlserver, this.doctor);
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 

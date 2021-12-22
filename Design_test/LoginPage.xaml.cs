@@ -35,10 +35,14 @@ namespace Design_test
         private void loginBtn(object sender, RoutedEventArgs e)
         {
             sqlserver.openConnection();
-            doctor = doctor.loginDoctor(usernameTextBox.Text, passwordTextBox.Text);
-            if (doctor != null)
+
+            doctor = new Doctor(usernameTextBox.Text, passwordTextBox.Text);
+            // Use alternate login otherwise doctor cannot get passed to main
+            doctor = doctor.alternateLoginDoctor(usernameTextBox.Text, passwordTextBox.Text);
+
+            if (doctor.id != null)
             {
-                doctor.getPatientForDoctor();
+                doctor.loadPatients();
                 main.Content = new homePage(main, this.sqlserver, doctor);
             }
             else
