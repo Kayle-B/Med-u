@@ -34,7 +34,7 @@ namespace Design_test
         
         private void loginBtn(object sender, RoutedEventArgs e)
         {
-             sqlserver.openConnection();
+            sqlserver.openConnection();
             doctor = doctor.loginDoctor(usernameTextBox.Text, passwordTextBox.Text);
             if (doctor != null)
             {

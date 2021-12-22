@@ -45,12 +45,6 @@ namespace Design_test
             closeConnection();
             openConnection();
         }
-
-
-
-
-
-
     }
 }
 
