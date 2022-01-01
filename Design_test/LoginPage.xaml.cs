@@ -22,18 +22,21 @@ namespace Design_test
     {
         SQLServer sqlserver;
         System.Windows.Controls.Frame main;
-        Doctor doctor;
-        
+        Doctor doctor = new Doctor();
+
         public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver, Doctor doctor)
         {
             InitializeComponent();
             this.main = main;
             this.sqlserver = sqlserver;
             this.doctor = doctor;
+
         }
-        
+
         private void loginBtn(object sender, RoutedEventArgs e)
         {
+            var mWindow = (MainWindow)Application.Current.MainWindow;
+
             sqlserver.openConnection();
 
             doctor = new Doctor(usernameTextBox.Text, passwordTextBox.Text);
@@ -43,7 +46,9 @@ namespace Design_test
             if (doctor.id != null)
             {
                 doctor.loadPatients();
-                main.Content = new homePage(main, this.sqlserver, doctor);
+                mWindow.doctor = doctor;
+                this.main.Content = new homePage(main, this.sqlserver);
+
             }
             else
             {

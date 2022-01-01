@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="780" Width="450">
     <!--Creating layout-->
+    
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*"/>

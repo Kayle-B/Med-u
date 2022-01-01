@@ -59,6 +59,21 @@ namespace Design_test
             }
         }
 
+        public Doctor getDocterFromId(int id)
+        {
+            string query = string.Format("SELECT * FROM doctor WHERE id='{0}'", id);
+            var reader = sQLServer.executeQeury(query);
+            while (reader.Read())
+            {
+                this.id = reader.GetInt16("id");
+                this.first_name = reader.GetString("first_name");
+                this.last_name = reader.GetString("last_name");
+                this.email = reader.GetString("email");
+            }
+            return this;
+        }
+
+
         public Doctor alternateLoginDoctor(string username, string password)
         {
             string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", username, password);

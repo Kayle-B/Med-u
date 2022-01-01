@@ -27,14 +27,17 @@ namespace Design_test
         List<Patient> searchPatient = new List<Patient>();
         System.Windows.Controls.Frame main;
         List<int> searchedId = new List<int>();
+        MainWindow mWindow = (MainWindow)Application.Current.MainWindow;
 
-        public homePage(System.Windows.Controls.Frame main, SQLServer sQLServer, Doctor doctor)
+
+
+        public homePage(System.Windows.Controls.Frame main, SQLServer sQLServer)
         {
             InitializeComponent();
             this.main = main;
             this.sQLServer = sQLServer;
-            this.doctor = doctor;
-            patientCountLabel.Content = this.doctor.Patients.Count();
+            this.doctor = mWindow.doctor;
+            patientCountLabel.Content = doctor.Patients.Count();
         }
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)
