@@ -24,8 +24,6 @@ namespace Design_test
         public List<Patient> Patients { get { return patients; } }
 
 
-
-
         public Doctor(int id, string first_name, string last_name, string email)
         {
             this.id = id;
@@ -43,7 +41,7 @@ namespace Design_test
 
         public Doctor()
         {
-
+        
         }
 
         public void loginDoctor()
@@ -80,10 +78,13 @@ namespace Design_test
             var reader = sQLServer.executeQeury(query);
             while (reader.Read())
             {
-                this.id = reader.GetInt16("id");
-                this.first_name = reader.GetString("first_name");
-                this.last_name = reader.GetString("last_name");
-                this.email = reader.GetString("email");
+                if (reader.HasRows)
+                {
+                    this.id = reader.GetInt16("id");
+                    this.first_name = reader.GetString("first_name");
+                    this.last_name = reader.GetString("last_name");
+                    this.email = reader.GetString("email");
+                }
             }
             return this;
         }

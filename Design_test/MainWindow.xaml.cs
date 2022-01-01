@@ -24,7 +24,7 @@ namespace Design_test
             InitializeComponent();
             hamburgerMenu.Visibility = Visibility.Collapsed;
             openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
-            Main.Content = new LoginPage(Main, sqlserver, this.doctor);
+            Main.Content = new LoginPage(Main, sqlserver);
         }
 
         private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
@@ -84,7 +84,7 @@ namespace Design_test
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
         {
             doctor = new Doctor();
-            Main.Content = new LoginPage(Main, sqlserver, doctor);
+            Main.Content = new LoginPage(Main, sqlserver);
             hamburgerMenu.Visibility = Visibility.Collapsed;
             openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
         }

@@ -23,14 +23,13 @@ namespace Design_test
         SQLServer sqlserver;
         System.Windows.Controls.Frame main;
         Doctor doctor = new Doctor();
+        
 
-        public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver, Doctor doctor)
+        public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver)
         {
             InitializeComponent();
             this.main = main;
             this.sqlserver = sqlserver;
-            this.doctor = doctor;
-
         }
 
         private void loginBtn(object sender, RoutedEventArgs e)
@@ -39,11 +38,12 @@ namespace Design_test
 
             sqlserver.openConnection();
 
-            doctor = new Doctor(usernameTextBox.Text, passwordTextBox.Text);
             // Use alternate login otherwise doctor cannot get passed to main
             doctor = doctor.alternateLoginDoctor(usernameTextBox.Text, passwordTextBox.Text);
 
-            if (doctor.id != null)
+
+            // for some reason when creating the class the id is 0 and not null
+            if (doctor.id != null && doctor.First_name != null)
             {
                 doctor.loadPatients();
                 mWindow.doctor = doctor;
