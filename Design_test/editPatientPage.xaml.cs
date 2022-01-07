@@ -44,15 +44,33 @@ namespace Design_test
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            patient = new Patient(id);
+            patient = new Patient();
             patient.getPatient(id);
-            naamTextBox.Text = patient.firstname;
-            achternaamTextBox.Text = patient.lastname;
+            firstnameTextBox.Text = patient.firstname;
+            lastnameTextBox.Text = patient.lastname;
+            prefixTextBox.Text = patient.prefix;
+            salutationTextBox.Text = patient.salutation;
+            emailTextBox.Text = patient.email;
+            phoneTextBox.Text = patient.phone;
+            allergyTextBox.Text = patient.allergies;
+            bsnTextBox.Text = patient.bsn;
         }
 
         private void updatePatientBtn_Click(object sender, RoutedEventArgs e)
         {
-            patient.updatePatient(this.id, naamTextBox.Text, achternaamTextBox.Text);
+            string salutation = salutationTextBox.Text;
+            string firstname = firstnameTextBox.Text;
+            string lastname = lastnameTextBox.Text;
+            string prefix = prefixTextBox.Text;
+            string email = emailTextBox.Text;
+            string phone = phoneTextBox.Text;
+            string BSN = bsnTextBox.Text;
+            string allergies = allergyTextBox.Text;
+
+            patient = new Patient(this.id, firstname, firstname, lastname, salutation, prefix, BSN, email, phone, allergies);
+
+
+            patient.updatePatient(patient);
             MessageBox.Show("Changed patient");
         }
     }

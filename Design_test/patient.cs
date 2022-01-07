@@ -24,7 +24,7 @@ namespace Design_test
         public string? phone { get; set; }
         public string? allergies { get; set; }
 
-        public Patient(int id,string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
+        public Patient(int id, string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
         {
             this.id = id;
             this.username = username;
@@ -40,9 +40,41 @@ namespace Design_test
             this.doctor_id = doctor_id;
              
         }
-        public Patient(int id)
+
+        public Patient(string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
         {
             this.id = id;
+            this.username = username;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.salutation = salutation;
+            this.prefix = prefix;
+            this.age = age;
+            this.bsn = bsn;
+            this.email = email;
+            this.phone = phone;
+            this.allergies = allergies;
+            this.doctor_id = doctor_id;
+
+        }
+
+        public Patient(int id, string username, string firstname, string lastname, string salutation, string prefix, string bsn, string email, string phone, string allergies)
+        {
+            this.id = id;
+            this.username = username;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.salutation = salutation;
+            this.prefix = prefix;
+            this.bsn = bsn;
+            this.email = email;
+            this.phone = phone;
+            this.allergies = allergies;
+        }
+
+        public Patient()
+        {
+
         }
         public Patient getPatient(int id)
         {
@@ -95,9 +127,11 @@ namespace Design_test
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 
-        public void updatePatient(int id, string name, string lastname)
+        public void updatePatient(Patient patient)
         {
-            string query = string.Format("UPDATE patient SET first_name='{0}', last_name='{1}' WHERE id='{2}'", name, lastname, id);
+            string query = string.Format("UPDATE patient SET " +
+                "first_name='{0}', last_name='{1}', salutation='{2}', prefix='{3}', email='{4}', phone='{5}', BSN='{6}', allergies='{7}' WHERE id='{8}'",
+                patient.firstname, patient.lastname, patient.salutation, patient.prefix, patient.email, patient.phone, patient.bsn, patient.allergies, patient.id);
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 

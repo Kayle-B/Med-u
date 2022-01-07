@@ -73,7 +73,7 @@ namespace Design_test
             Random rnd = new Random();
             int randomAge = rnd.Next(65, 85);
 
-            patient = new Patient(0, firstname, firstname, lastname, salutation, prefix, randomAge, BSN,  email,  phone,  allergies, this.doctor.id);
+            patient = new Patient(firstname, firstname, lastname, salutation, prefix, randomAge, BSN,  email,  phone,  allergies, this.doctor.id);
 
 
 
