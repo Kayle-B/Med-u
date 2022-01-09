@@ -9,11 +9,10 @@ namespace Design_test
     public class Medicine
     {
         public int id;
-        public string name;
-        public string consumption_method;
-        public string category;
-        public string? prescription;
-        SQLServer sQLServer = new SQLServer();
+        public string name { get; set; }
+        public string consumption_method { get; set; }
+        public string category { get; set; }
+        public string? prescription { get; set; }
 
 
         public Medicine(int id, string name, string consumption_method, string category, string prescription)

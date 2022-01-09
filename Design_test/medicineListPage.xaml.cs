@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,11 +36,13 @@ namespace Design_test
         {
             patient = new Patient();
             patient.getMedicine(patient_id);
-            foreach (Medicine medicine in patient.medicines)
+            medicineDataGrid.ItemsSource = patient.medicines;
+
+/*            foreach (Medicine medicine in patient.medicines)
             {
                 string data = string.Format("Naam: {0} | Consumptie: {1} | Categorie: {2} | Bijsluiter: {3}", medicine.name, medicine.consumption_method, medicine.category, medicine.prescription );
                 medicineListBox.Items.Add(data);
-            }
+            }*/
         }
     }
 }
