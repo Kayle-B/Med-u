@@ -1,0 +1,29 @@
+﻿<Page x:Class="Design_test.medicineListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Design_test"
+      mc:Ignorable="d" 
+      d:DesignHeight="780" d:DesignWidth="480" Background="white"
+      Title="medicineListPage">
+
+    <Grid Background="Transparent" Loaded="Grid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="350*" />
+            <ColumnDefinition Width="30*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+            <ListBox x:Name="medicineListBox" Height="100"></ListBox>
+            <Button Content="Add"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

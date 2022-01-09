@@ -40,11 +40,6 @@ namespace Design_test
             patientCountLabel.Content = doctor.Patients.Count();
         }
 
-        private void addPatientButton_Click(object sender, RoutedEventArgs e)
-        {
-            string name = addPatientTextbox.Text;
-            main.Content = new addPatientPage(name, doctor);
-        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -98,13 +93,6 @@ namespace Design_test
             }
         }
 
-        private void detailBtn_Click(object sender, RoutedEventArgs e)
-        {
-            int index = patientComboBox.SelectedIndex;
-            var id = searchedId[index];
-            main.Content = new editPatientPage(id);
-        }
-
         private void patientComboBox_DropDownOpened(object sender, EventArgs e)
         {
 
@@ -119,6 +107,26 @@ namespace Design_test
                 }
                 patientComboBox.IsDropDownOpen = true;
             }
+        }
+
+        private void medListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int index = patientComboBox.SelectedIndex;
+            var id = searchedId[index];
+            main.Content = new medicineListPage(id);
+        }
+
+        private void addPatientButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = addPatientTextbox.Text;
+            main.Content = new addPatientPage(name, doctor);
+        }
+
+        private void detailBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int index = patientComboBox.SelectedIndex;
+            var id = searchedId[index];
+            main.Content = new editPatientPage(id);
         }
     }
 }

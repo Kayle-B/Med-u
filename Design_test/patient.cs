@@ -23,6 +23,7 @@ namespace Design_test
         public string email { get; set; }
         public string? phone { get; set; }
         public string? allergies { get; set; }
+        public List<Medicine> medicines { get; set; }
 
         public Patient(int id, string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
         {
@@ -38,7 +39,6 @@ namespace Design_test
             this.phone = phone;
             this.allergies = allergies;
             this.doctor_id = doctor_id;
-             
         }
 
         public Patient(string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
@@ -55,7 +55,6 @@ namespace Design_test
             this.phone = phone;
             this.allergies = allergies;
             this.doctor_id = doctor_id;
-
         }
 
         public Patient(int id, string username, string firstname, string lastname, string salutation, string prefix, string bsn, string email, string phone, string allergies)
@@ -76,6 +75,7 @@ namespace Design_test
         {
 
         }
+
         public Patient getPatient(int id)
         {
             string query = string.Format("SELECT * FROM patient WHERE id = '{0}'", id);
@@ -98,6 +98,8 @@ namespace Design_test
 
             return this;
         }
+
+
 
         private int generatePassword()
         {
@@ -135,6 +137,47 @@ namespace Design_test
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 
+        public void addMedicine(Medicine medicine)
+        {
+            this.medicines.Add(new Medicine(medicine.id, medicine.name, medicine.consumption_method, medicine.category, medicine.prescription));
+        }
+
+        public void getMedicine(int id)
+        {
+            if(this.medicines == null)
+            {
+                this.medicines = new List<Medicine>();
+            }
+            else
+            {
+                this.medicines.Clear();
+            }
+            string query = string.Format("SELECT " + 
+                "medicine.id, " +
+                "name, " +
+                "consumption_method, " +
+                "category, prescription " +
+                    "FROM medicine " +
+                    "INNER JOIN consumption_date " +
+                    "ON medicine.id = consumption_date.medicine_id " +
+                    "WHERE consumption_date.patient_id = '{0}' GROUP BY name;", id);
+            sQLServer.reader = sQLServer.executeQeury(query);
+
+            while (sQLServer.reader.Read())
+            {
+                int prescription = sQLServer.reader.GetOrdinal("prescription");
+
+
+                Medicine medicine = new Medicine(
+                    sQLServer.reader.GetInt32("id"),
+                    sQLServer.reader.GetString("name"),
+                    sQLServer.reader.GetString("consumption_method"),
+                    sQLServer.reader.GetString("category"),
+                    sQLServer.reader.IsDBNull(prescription) ? String.Empty : sQLServer.reader.GetString("prescription")
+                    );
+                this.addMedicine(medicine);
+            }
+        }
 
     }
 }

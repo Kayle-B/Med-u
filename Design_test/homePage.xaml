@@ -35,7 +35,7 @@
 
             </Grid>
             <StackPanel Margin="0,60,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="medListBtn" Content="Med lijst" Height="25" Width="100" HorizontalAlignment="Left" Visibility="Hidden">
+                <Button x:Name="medListBtn" Content="Med lijst" Height="25" Width="100" HorizontalAlignment="Left" Visibility="Hidden" Click="medListBtn_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
