@@ -1,0 +1,32 @@
+﻿<Page x:Class="Design_test._404Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Design_test"
+      mc:Ignorable="d" 
+       d:DesignHeight="780" d:DesignWidth="480" Background="white"
+      Title="_404Page">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="350*" />
+            <ColumnDefinition Width="30*" />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock FontSize="40" HorizontalAlignment="Center">404</TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Center">De pagina die u probeert te bezoeken is niet gevonden</TextBlock>
+        </StackPanel>
+    </Grid>
+
+
+</Page>

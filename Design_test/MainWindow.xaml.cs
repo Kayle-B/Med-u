@@ -51,7 +51,7 @@ namespace Design_test
 
         private void patientOverzichtBtn_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new patientOverzicht();
+            Main.Content = new homePage(this.Main, this.sqlserver);
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
@@ -63,13 +63,13 @@ namespace Design_test
 
         private void instellingBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new _404Page();
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
         private void helpBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new _404Page();
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
 
