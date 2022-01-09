@@ -19,6 +19,10 @@ namespace Design_test
     /// <summary>
     /// Interaction logic for medicineListPage.xaml
     /// </summary>
+    /// 
+    ///
+    /// Added a remove funtion (Check id of medicine and remove all consumption dates with that medicine's id
+    /// Added a add function that lets you select a medicine and a time when and an amount
     public partial class medicineListPage : Page
     {
         int patient_id;
@@ -37,12 +41,6 @@ namespace Design_test
             patient = new Patient();
             patient.getMedicine(patient_id);
             medicineDataGrid.ItemsSource = patient.medicines;
-
-/*            foreach (Medicine medicine in patient.medicines)
-            {
-                string data = string.Format("Naam: {0} | Consumptie: {1} | Categorie: {2} | Bijsluiter: {3}", medicine.name, medicine.consumption_method, medicine.category, medicine.prescription );
-                medicineListBox.Items.Add(data);
-            }*/
         }
     }
 }
