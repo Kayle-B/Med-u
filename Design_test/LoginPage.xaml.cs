@@ -36,8 +36,13 @@ namespace Design_test
         {
             var mWindow = (MainWindow)Application.Current.MainWindow;
 
-            sqlserver.openConnection();
+            bool connectionOpen = sqlserver.openConnectionR();
 
+            if (connectionOpen == false)
+            {
+                MessageBox.Show("De connectie naar de database kan niet worden gemaakt.");
+                return;
+            }
             // Use alternate login otherwise doctor cannot get passed to main
             doctor = doctor.alternateLoginDoctor(usernameTextBox.Text, passwordTextBox.Text);
 

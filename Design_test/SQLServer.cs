@@ -14,6 +14,8 @@ namespace Design_test
         private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = database_medu; UID = root; Password=");
         private MySqlCommand cmd;
         public MySqlDataReader reader;
+        private bool connectionOpen = false;
+        
 
         public void openConnection()
         {
@@ -21,6 +23,23 @@ namespace Design_test
             {
                 conn.Open();
             }
+        }
+
+        public bool openConnectionR()
+        {
+            if (conn.State.ToString() != "Open")
+            {
+                try
+                {
+                    conn.Open();
+                    connectionOpen = true;
+                }
+                catch (Exception)
+                {
+                    connectionOpen = false;
+                }
+            }
+            return connectionOpen;
         }
 
         public void closeConnection()
