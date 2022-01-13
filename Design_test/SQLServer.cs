@@ -11,7 +11,7 @@ namespace Design_test
 {
     public class SQLServer
     {
-        private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = database_medu; UID = root; Password=");
+        private static MySqlConnection conn = new MySqlConnection("SERVER=localhost; Initial Catalog = database_medu; UID = root; Password=; convert zero datetime=True");
         private MySqlCommand cmd;
         public MySqlDataReader reader;
         private bool connectionOpen = false;

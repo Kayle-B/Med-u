@@ -49,5 +49,10 @@ namespace Design_test
         {
             main.Content = new addIntakeMomentPage(main, patient_id);
         }
+
+        private void intakeMomentsDetail_Click(object sender, RoutedEventArgs e)
+        {
+            main.Content = new consumptionDatePage(main, patient_id);
+        }
     }
 }

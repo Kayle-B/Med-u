@@ -24,6 +24,7 @@ namespace Design_test
         public string? phone { get; set; }
         public string? allergies { get; set; }
         public List<Medicine> medicines { get; set; }
+        public List<consumption_date> consumption_date { get; set;}
 
         public Patient(int id, string username, string firstname, string lastname, string salutation, string prefix, int age, string bsn, string email, string phone, string allergies, int doctor_id)
         {
@@ -69,6 +70,11 @@ namespace Design_test
             this.email = email;
             this.phone = phone;
             this.allergies = allergies;
+        }
+
+        public Patient(int id)
+        {
+
         }
 
         public Patient()
@@ -177,6 +183,46 @@ namespace Design_test
                     );
                 this.addMedicine(medicine);
             }
+        }
+
+        public void addConsumption_date(consumption_date consumption_date)
+        {
+            this.consumption_date.Add(new consumption_date(consumption_date));
+        }
+
+        // TRIED this.id here but always was 0
+        public void getConsumption_dates(int id)
+        {
+            if (this.consumption_date == null)
+            {
+                this.consumption_date = new List<consumption_date>();
+            }
+            else
+            {
+                this.consumption_date.Clear();
+            }
+
+            string query = string.Format("SELECT * FROM consumption_date WHERE consumption_date.patient_id = '{0}'", id);
+
+            var reader = sQLServer.executeQeury(query);
+
+            while (reader.Read())
+            {
+                consumption_date consumption_Dates = new consumption_date(reader.GetInt32("medicine_id"), reader.GetDateTime("date"), reader.GetInt32("patient_id"), reader.GetInt32("amount"), reader.GetBoolean("is_consumed"));
+                this.addConsumption_date(consumption_Dates);
+            }
+
+
+            /*            string query = string.Format("SELECT " +
+             "consumption_date.id, " +
+             "date, " +
+             "amount, " +
+             "medicine_id, " +
+             "is_consumed" +
+                 "FROM consumption_date " +
+                 "INNER JOIN medicine " +
+                 "ON consumption_date.medicine_id = medicine.id " +
+                 "WHERE consumption_date.patient_id = '{0}' GROUP BY name;", this.id);*/
         }
 
     }
