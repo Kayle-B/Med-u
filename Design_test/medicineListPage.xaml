@@ -31,6 +31,22 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="In neem moment toevoegen" Click="Button_Click"></Button>
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Button HorizontalAlignment="Right" Content="In neem moment toevoegen" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="175" Click="savePatientBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3" Content="In neem moment bekijken" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="175" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
     </Grid>
 </Page>
