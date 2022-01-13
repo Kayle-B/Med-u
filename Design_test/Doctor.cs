@@ -11,7 +11,7 @@ namespace Design_test
     {
         public SQLServer sQLServer = new SQLServer();
 
-        public int id { get; set; }
+        public int id { get; private set; }
         private string username { get; set; }
         private string password;
 
@@ -44,7 +44,7 @@ namespace Design_test
         
         }
 
-        public void loginDoctor()
+        public void loginDoctor() 
         {
             string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", this.username, this.password);
             var reader = sQLServer.executeQeury(query);
@@ -72,7 +72,7 @@ namespace Design_test
         }
 
 
-        public Doctor alternateLoginDoctor(string username, string password)
+        public Doctor alternateLoginDoctor(string username, string password) // Probeer dit uit te werken naar login
         {
             string query = string.Format("SELECT * FROM doctor WHERE username='{0}' && password='{1}'", username, password);
             var reader = sQLServer.executeQeury(query);

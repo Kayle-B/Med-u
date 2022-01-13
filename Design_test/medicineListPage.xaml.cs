@@ -28,12 +28,14 @@ namespace Design_test
         int patient_id;
         SQLServer sQLServer;
         Patient patient;
+        System.Windows.Controls.Frame main;
 
 
-        public medicineListPage(int patient_id)
+        public medicineListPage(int patient_id, System.Windows.Controls.Frame main)
         {
             InitializeComponent();
             this.patient_id = patient_id;
+            this.main = main;
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -41,6 +43,11 @@ namespace Design_test
             patient = new Patient();
             patient.getMedicine(patient_id);
             medicineDataGrid.ItemsSource = patient.medicines;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            main.Content = new addIntakeMomentPage(main, patient_id);
         }
     }
 }

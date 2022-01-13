@@ -95,7 +95,6 @@ namespace Design_test
 
         private void patientComboBox_DropDownOpened(object sender, EventArgs e)
         {
-
             if (patientComboBox.Text == "")
             {
                 patientComboBox.Items.Clear();
@@ -113,7 +112,7 @@ namespace Design_test
         {
             int index = patientComboBox.SelectedIndex;
             var id = searchedId[index];
-            main.Content = new medicineListPage(id);
+            main.Content = new medicineListPage(id, main);
         }
 
         private void addPatientButton_Click(object sender, RoutedEventArgs e)

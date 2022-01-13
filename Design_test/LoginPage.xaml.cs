@@ -23,7 +23,7 @@ namespace Design_test
         SQLServer sqlserver;
         System.Windows.Controls.Frame main;
         Doctor doctor = new Doctor();
-        
+        //Doctor doctor;
 
         public LoginPage(System.Windows.Controls.Frame main, SQLServer sqlserver)
         {
@@ -45,8 +45,8 @@ namespace Design_test
             }
             // Use alternate login otherwise doctor cannot get passed to main
             doctor = doctor.alternateLoginDoctor(usernameTextBox.Text, passwordTextBox.Text);
-
-
+            //doctor = new Doctor(usernameTextBox.Text, passwordTextBox.Text);
+           // doctor.loginDoctor();
             // for some reason when creating the class the id is 0 and not null
             if (doctor.id != null && doctor.First_name != null)
             {
