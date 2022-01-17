@@ -34,6 +34,7 @@ namespace Design_test
         public homePage(System.Windows.Controls.Frame main, SQLServer sQLServer)
         {
             InitializeComponent();
+            // set the received data in the variables above
             this.main = main;
             this.sQLServer = sQLServer;
             this.doctor = mWindow.doctor;
@@ -48,14 +49,19 @@ namespace Design_test
 
         private void patientComboBox_KeyUp(object sender, KeyEventArgs e)
         {
+            // On every new letter in the searchbox clear the list so we don't get double data
             patientComboBox.Items.Clear();
             searchedId.Clear();
 
+            //if the searchbox is empty, show all patients
             if (patientComboBox.Text != null)
             {
                 doctor.loadPatients();
+
+                //Check if the combo box is not empty
                 if (patientComboBox.Text != "")
                 {
+                    //for each patient that the doctor has, check if the name contains any letters in the searchbox
                     foreach (var patient in doctor.Patients)
                     {
                         if (patient.firstname.ToLower().Contains(patientComboBox.Text.ToLower()))
@@ -79,6 +85,7 @@ namespace Design_test
 
         private void patientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //if there is a selected patient, show two buttons under the patient
             if (patientComboBox.SelectedItem == null)
             {
                 zNameRectangle.Height = 120;

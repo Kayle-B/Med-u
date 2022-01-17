@@ -22,6 +22,7 @@ namespace Design_test
         public MainWindow()
         {
             InitializeComponent();
+            // Set is so that the hamburger menu is closed on start
             hamburgerMenu.Visibility = Visibility.Collapsed;
             openHamburgerMenuBtn.Visibility = Visibility.Collapsed;
             Main.Content = new LoginPage(Main, sqlserver);
@@ -29,6 +30,7 @@ namespace Design_test
 
         private void closeHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
         {
+            // if the menu is close button is pressed close if its not closed already
             if (hamburgerMenu.Visibility != Visibility.Collapsed)
             {
                 hamburgerMenu.Visibility = Visibility.Collapsed;
@@ -37,6 +39,7 @@ namespace Design_test
 
         private void openHamburgerMenuBtn_Click(object sender, RoutedEventArgs e)
         {
+            // if the menu is open button is pressed open if its not open already
             if (hamburgerMenu.Visibility == Visibility.Collapsed)
             {
                 hamburgerMenu.Visibility = Visibility.Visible;
@@ -45,6 +48,7 @@ namespace Design_test
 
         private void homepageBtn_Click(object sender, RoutedEventArgs e)
         {
+            //redirect the content to homepage iwth the data of this main and the sqlserver class
             Main.Content = new homePage(this.Main, this.sqlserver);
             hamburgerMenu.Visibility = Visibility.Collapsed;
         }
@@ -83,6 +87,7 @@ namespace Design_test
 
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
         {
+            // making it so that the existing doctor becomes a new doctor with no data. 
             doctor = new Doctor();
             Main.Content = new LoginPage(Main, sqlserver);
             hamburgerMenu.Visibility = Visibility.Collapsed;

@@ -25,6 +25,8 @@ namespace Design_test
         List<DateTime> dateTimes = new List<DateTime>();
         List<Medicine> medicines = new List<Medicine>();
         SQLServer sqlServer = new SQLServer();
+        // I create a searchedId list here
+        // We use this later on line 65
         List<int> searchedId = new List<int>();
         List<consumption_date> consumption_Dates = new List<consumption_date>();
         int amount;
@@ -44,6 +46,7 @@ namespace Design_test
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            // if the page gets loaded clear any previously set data
             medicines.Clear();
             string query = "SELECT * FROM medicine";
             var reader = sqlServer.executeQeury(query);
@@ -54,13 +57,18 @@ namespace Design_test
 
             foreach (var medicine in medicines)
             {
+                // for each medicine we add that name to the item box
                 medicineComboBox.Items.Add(medicine.name);
+                // than we add their id to a seperate list
+                // because we add both values in the list their index shall be the same
+                // that why at line 103 we can set the medicine id to the value at the same index as the combobox
                 searchedId.Add(medicine.id);
             }
         }
 
         private void addMomentBtn_Click(object sender, RoutedEventArgs e)
         {
+            //try to parse the input to a number, catch if it's not a number
             try
             {
                 amount = int.Parse(amountTextBox.Text);
@@ -79,6 +87,7 @@ namespace Design_test
 
             consumption_Dates.Add(new consumption_date(medicine_id, DateTime.Today, patient_id, amount));
 
+            // after a new consumption data is created, clear all the input fields
             clearInputs();
         }
 

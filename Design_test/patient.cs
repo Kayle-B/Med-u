@@ -150,6 +150,8 @@ namespace Design_test
 
         public void getMedicine(int id)
         {
+            //Check if the list is already created at this point
+            // If it does not exist we make one
             if(this.medicines == null)
             {
                 this.medicines = new List<Medicine>();
@@ -169,6 +171,7 @@ namespace Design_test
                     "WHERE consumption_date.patient_id = '{0}' GROUP BY name;", id);
             sQLServer.reader = sQLServer.executeQeury(query);
 
+            //While we get data from the reader set that readers data in the medicine class
             while (sQLServer.reader.Read())
             {
                 int prescription = sQLServer.reader.GetOrdinal("prescription");
@@ -187,6 +190,7 @@ namespace Design_test
 
         public void addConsumption_date(consumption_date consumption_date)
         {
+            //This previously declared consumption_data list adds a new consumption_data in the list
             this.consumption_date.Add(new consumption_date(consumption_date));
         }
 
