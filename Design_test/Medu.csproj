@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>MED-U-logo-white.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,10 @@
     <None Remove="img\Voeg_patient_toe.jpg" />
     <None Remove="Overzicht.jpg" />
     <None Remove="Zoekuh.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MED-U-logo-white.ico" />
   </ItemGroup>
 
   <ItemGroup>

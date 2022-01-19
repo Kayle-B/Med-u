@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio Version 17
+# Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Design_test", "Design_test\Design_test.csproj", "{BDEC7D38-3E02-41ED-A484-2E96583391D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medu", "Design_test\Medu.csproj", "{BDEC7D38-3E02-41ED-A484-2E96583391D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

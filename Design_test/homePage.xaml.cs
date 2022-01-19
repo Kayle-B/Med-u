@@ -106,6 +106,8 @@ namespace Design_test
             {
                 patientComboBox.Items.Clear();
                 searchedId.Clear();
+                doctor.loadPatients();
+
                 foreach (var patient in doctor.Patients)
                 {
                     searchedId.Add(patient.id);
