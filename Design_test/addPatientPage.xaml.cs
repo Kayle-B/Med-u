@@ -88,7 +88,7 @@ namespace Design_test
 
                 if (sQLServer.executeQeury(query).HasRows != true)
                 {
-                    patient.savePatient(patient);
+                    patient.savePatient();
                     MessageBox.Show("Patient toegevoegd");
                 }
                 else

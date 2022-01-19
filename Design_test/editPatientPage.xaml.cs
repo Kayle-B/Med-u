@@ -70,7 +70,7 @@ namespace Design_test
             patient = new Patient(this.id, firstname, firstname, lastname, salutation, prefix, BSN, email, phone, allergies);
 
 
-            patient.updatePatient(patient);
+            patient.updatePatient();
             MessageBox.Show("Changed patient");
         }
     }

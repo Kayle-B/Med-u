@@ -74,7 +74,7 @@ namespace Design_test
 
         public Patient(int id)
         {
-
+            this.id = id;
         }
 
         public Patient()
@@ -115,7 +115,7 @@ namespace Design_test
             return randomPass;
         }
 
-        public void savePatient(Patient patient)
+        public void savePatient()
         {
             int password = generatePassword();
             string query = string.Format("INSERT INTO `patient` ( `username`, `password`, `first_name`, `last_name`, `salutation`, `prefix`, `age`, `BSN`, `email`, `phone`, `allergies`, `doctor_id`) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}','{7}', '{8}', '{9}', '{10}', {11});",
@@ -135,11 +135,11 @@ namespace Design_test
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 
-        public void updatePatient(Patient patient)
+        public void updatePatient()
         {
             string query = string.Format("UPDATE patient SET " +
                 "first_name='{0}', last_name='{1}', salutation='{2}', prefix='{3}', email='{4}', phone='{5}', BSN='{6}', allergies='{7}' WHERE id='{8}'",
-                patient.firstname, patient.lastname, patient.salutation, patient.prefix, patient.email, patient.phone, patient.bsn, patient.allergies, patient.id);
+                this.firstname, this.lastname, this.salutation, this.prefix, this.email, this.phone, this.bsn, this.allergies, this.id);
             sQLServer.reader = sQLServer.executeQeury(query);
         }
 
