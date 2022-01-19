@@ -20,16 +20,17 @@
             <ColumnDefinition Width="350*" />
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
-
-
-        <DataGrid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Name="medicineDataGrid" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding name}" />
-                <DataGridTextColumn Header="consumption_method" Binding="{Binding consumption_method}" />
-                <DataGridTextColumn Header="category" Binding="{Binding category}" />
-                <DataGridTextColumn Header="prescription" Binding="{Binding prescription}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+            <Label HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Pillen</Label>
+            <DataGrid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Name="medicineDataGrid" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding name}" />
+                    <DataGridTextColumn Header="consumption_method" Binding="{Binding consumption_method}" />
+                    <DataGridTextColumn Header="category" Binding="{Binding category}" />
+                    <DataGridTextColumn Header="prescription" Binding="{Binding prescription}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
 
         <Grid Grid.Column="1" Grid.Row="3">
             <Button HorizontalAlignment="Right" Content="In neem moment toevoegen" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Height="37" Width="175" Click="Button_Click">

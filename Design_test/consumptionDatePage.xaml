@@ -21,8 +21,9 @@
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
-
-        <DataGrid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Name="consumptionDateDataGrid" AutoGenerateColumns="False" Loaded="consumptionDateDataGrid_Loaded_1" IsReadOnly="True">
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
+            <Label HorizontalAlignment="Center" FontSize="25" FontWeight="Bold">Momenten</Label>
+        <DataGrid Name="consumptionDateDataGrid" AutoGenerateColumns="False" Loaded="consumptionDateDataGrid_Loaded_1" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum" Binding="{Binding date}" />
                 <DataGridTextColumn Header="Medicijn" Binding="{Binding medicine_id}" />
@@ -30,6 +31,7 @@
                 <DataGridTextColumn Header="Ingenomen" Binding="{Binding is_consumed}" />
             </DataGrid.Columns>
         </DataGrid>
+        </StackPanel>
 
     </Grid>
 </Page>
