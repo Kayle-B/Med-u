@@ -35,7 +35,7 @@
             <Label Content="Password" HorizontalAlignment="Center" FontSize="20"/>
             <Grid>
                 <Rectangle  Panel.ZIndex="1" RadiusX="5" RadiusY="5" HorizontalAlignment="Center" Height="37" Stroke="Gray" Width="294" Fill="White"/>
-                <TextBox x:Name="passwordTextBox" Margin="0,-5,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" TextWrapping="Wrap" Width="278" Height="26" BorderBrush="{x:Null}" SelectionBrush="#FF0078D7"/>
+                <PasswordBox PasswordChar="*" x:Name="passwordTextBox" Margin="0,-5,0,0" Panel.ZIndex="2" HorizontalAlignment="Center" Width="278" Height="26" BorderBrush="{x:Null}" SelectionBrush="#FF0078D7"/>
             </Grid>
 
         </StackPanel>

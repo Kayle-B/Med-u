@@ -44,7 +44,7 @@ namespace Design_test
                 return;
             }
             // Use alternate login otherwise doctor cannot get passed to main
-            doctor = doctor.alternateLoginDoctor(usernameTextBox.Text, passwordTextBox.Text);
+            doctor = doctor.alternateLoginDoctor(usernameTextBox.Text, passwordTextBox.Password.ToString());
             //doctor = new Doctor(usernameTextBox.Text, passwordTextBox.Text);
            // doctor.loginDoctor();
             // for some reason when creating the class the id is 0 and not null
