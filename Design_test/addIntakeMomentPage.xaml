@@ -51,7 +51,7 @@
                 <StackPanel>
                     <Label Panel.ZIndex="1" FontSize="20" Content="Moment"/>
                     <Grid>
-                        <wpfTool:DateTimePicker TimeFormatString="yyy-mm-dd hh-mi-ss" x:Name="dateTimeInput" Background="#FFCECECE" Height="30" Width="250" HorizontalAlignment="Left"/>
+                        <wpfTool:DateTimePicker Format="Custom" FormatString="dd-MM-yyyy HH:mm:ss" x:Name="dateTimeInput" Background="#FFCECECE" Height="30" Width="250" HorizontalAlignment="Left"/>
 
                         <Button HorizontalAlignment="Left" x:Name="addMomentBtn" Content="Toevoegen" BorderBrush="#FFE67937" Background="#FFE67937" Foreground="White" Width="100" Margin="260,0,0,0" Click="addMomentBtn_Click">
                             <Button.Resources>

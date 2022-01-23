@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Design_test
 {
@@ -74,18 +76,20 @@ namespace Design_test
                 amount = int.Parse(amountTextBox.Text);
             }
             catch { }
-            if (dateTimeInput.Value.HasValue == false || medicineComboBox.SelectedIndex == null || amount <= 0)
+            if (dateTimeInput.Value.HasValue == false || medicineComboBox.SelectedIndex == -1 || amount <= 0)
             {
                 MessageBox.Show("Alle velden moeten worden ingevuld!");
                 return;
             }
-            dateTimes.Add((DateTime)dateTimeInput.Value);
+            string stringDate = dateTimeInput.Text;
+            var dateTime = DateTime.Parse(stringDate);
+            dateTimes.Add(dateTime);
 
-            tempMomentListbox.Items.Add(string.Format("Date: {0} | Pill: {1} | Aantal: {2}", (DateTime)dateTimeInput.Value, medicineComboBox.SelectedValue, amountTextBox.Text));
+            tempMomentListbox.Items.Add(string.Format("Date: {0} | Pill: {1} | Aantal: {2}", stringDate, medicineComboBox.SelectedValue, amountTextBox.Text));
             int medicine_id = medicineComboBox.SelectedIndex + 1;
 
-
-            consumption_Dates.Add(new consumption_date(medicine_id, DateTime.Today, patient_id, amount));
+            
+            consumption_Dates.Add(new consumption_date(medicine_id, dateTime, patient_id, amount));
 
             // after a new consumption data is created, clear all the input fields
             clearInputs();
@@ -113,7 +117,7 @@ namespace Design_test
             // STILL NEED TO CHANGE DATE FORMAT
             foreach (var singleDate in consumption_Dates)
             {
-                string query = string.Format("INSERT INTO consumption_date (`date`, `amount`, `medicine_id`, `patient_id`) VALUES ('{0}','{1}','{2}','{3}')", singleDate.date, singleDate.amount, singleDate.medicine_id, patient_id);
+                string query = string.Format("INSERT INTO consumption_date (`date`, `amount`, `medicine_id`, `patient_id`) VALUES ('{0}','{1}','{2}','{3}')", singleDate.date.ToString("yyyy/MM/dd HH:mm:ss"), singleDate.amount, singleDate.medicine_id, patient_id);
                 sqlServer.executeQeury(query);
             }
             tempMomentListbox.Items.Clear();
