@@ -104,22 +104,21 @@ namespace Design_test
         }
         private void removeMomentBtn_Click(object sender, RoutedEventArgs e)
         {
-            medicine_id = searchedId[index];
             var selected = tempMomentListbox.SelectedItem;
+            consumption_Dates.RemoveAt(tempMomentListbox.SelectedIndex);
             tempMomentListbox.Items.Remove(selected);
-            consumption_Dates.RemoveAt(index);
         }
 
 
 
         private void saveMomentBtn_Click(object sender, RoutedEventArgs e)
         {
-            // STILL NEED TO CHANGE DATE FORMAT
             foreach (var singleDate in consumption_Dates)
             {
                 string query = string.Format("INSERT INTO consumption_date (`date`, `amount`, `medicine_id`, `patient_id`) VALUES ('{0}','{1}','{2}','{3}')", singleDate.date.ToString("yyyy/MM/dd HH:mm:ss"), singleDate.amount, singleDate.medicine_id, patient_id);
                 sqlServer.executeQeury(query);
             }
+            consumption_Dates = null;
             tempMomentListbox.Items.Clear();
             clearInputs();
         }
